@@ -1,0 +1,20 @@
+<svg width="1440" height="3498" viewBox="0 0 1440 3498" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_38_171)">
+<mask id="mask0_38_171" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="1440" height="4500">
+<path d="M1440 0H0V4500H1440V0Z" fill="white"/>
+</mask>
+<g mask="url(#mask0_38_171)">
+<path d="M1440 0H0V4500H1440V0Z" fill="#FDFDFD"/>
+<path d="M1112.11 -8.40991C883.14 234.9 944.57 1211.2 663.27 1250.39C381.97 1289.58 438.86 687.89 214.44 687.89C-9.9799 687.89 -64.6499 1190.79 -234.4 1250.39" stroke="#F45B49" stroke-opacity="0.5" stroke-width="2"/>
+<path d="M1039.15 -625.18C807.5 -339.47 897.39 714.92 600.15 779.08C302.92 843.24 380.66 216.58 161.16 216.58C-58.34 216.58 -110.24 718.01 -277.84 779.08" stroke="#F45B49" stroke-opacity="0.5" stroke-width="2"/>
+<path d="M1152.17 -685.22C841.47 -448.68 1155.39 62.75 488.23 728.63C-178.93 1394.51 174.29 2413.94 -175.71 2843.63" stroke="#F45B49" stroke-opacity="0.5" stroke-width="2"/>
+<path d="M1179.09 -377.3C925.28 682.35 1233.59 3115.97 765.47 3961.5C297.36 4807.03 558.67 3399 351.86 3399C145.05 3399 100.22 3896.46 -61.76 3961.5" stroke="#F45B49" stroke-opacity="0.5" stroke-width="2"/>
+<path d="M1198.73 -612.4C810.14 390.87 1150.86 3192.89 542 3640.76C-66.87 4088.63 202.09 2380.72 -114.74 2110.76" stroke="#F45B49" stroke-opacity="0.5" stroke-width="2"/>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_38_171">
+<rect width="1440" height="4500" fill="white"/>
+</clipPath>
+</defs>
+</svg>

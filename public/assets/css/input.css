@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Prata&family=Train+One&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-train-one: "Train One", system-ui;
+  --fonts-prata: "Prata", serif;
+  --color-orange: #f45b49;
+  --color-low-orange: #faddda;
+  --color-dark-blue: #1c2628;
+  --color-grey-bg: #f5f5f5;
+  --color-dark-blue-bg: #3f565a;
+  --color-low-blue-bg: #b8c6c9;
+}
+
+:root {
+  font-family: var(--fonts-prata);
+}
+
+.product-grid {
+  @apply grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4;
+}
+
+.product-flex {
+  @apply max-w-full w-full h-auto flex justify-start items-start flex-wrap gap-4;
+}
