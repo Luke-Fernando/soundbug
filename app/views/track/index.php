@@ -101,7 +101,7 @@ require __DIR__ . '/../_includes/head.php';
                     require __DIR__ . '/../_includes/review.php';
                 }
                 ?>
-                <a href="#" class="text-sm text-[var(--color-orange)] hover:underline ease-linear duration-100 cursor-pointer">
+                <a href="/reviews" class="text-sm text-[var(--color-orange)] hover:underline ease-linear duration-100 cursor-pointer">
                     See all
                 </a>
             </div>

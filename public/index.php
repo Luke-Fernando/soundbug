@@ -12,6 +12,7 @@ $router->register('/home', 'HomeController', 'home');
 $router->register('/all-tracks', 'TrackController', 'all_tracks');
 $router->register('/advanced-search', 'TrackController', 'advanced_search');
 $router->register('/track', 'TrackController', 'track');
+$router->register('/reviews', 'TrackController', 'reviews');
 
 try {
     $router->dispatch(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
