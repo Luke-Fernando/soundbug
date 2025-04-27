@@ -19,7 +19,7 @@ require __DIR__ . '/../_includes/head.php';
                     </h1>
                 </div>
                 <div class="w-auto h-auto flex justify-start items-center mt-5">
-                    <a href="/dashboard" class="w-16 h-auto text-[var(--color-orange)] flex justify-center items-center">
+                    <a href="/all-tracks" class="w-16 h-auto text-[var(--color-orange)] flex justify-center items-center">
                         <?php
                         $styles = "w-full";
                         require __DIR__ . '/../_includes/icons/play-icon.php';
