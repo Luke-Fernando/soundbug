@@ -10,7 +10,7 @@ require __DIR__ . '/../_includes/head.php';
     require __DIR__ . '/../_includes/navbar.php';
     ?>
     <section class="h-auto container-main">
-        <header class="container-sub relative h-auto">
+        <header class="container-sub relative h-auto max-h-[696px]">
             <div class="w-full h-auto flex flex-col justify-start items-start pb-80">
                 <div class="w-auto h-auto flex justify-start items-start">
                     <h1 class="md:text-7xl text-6xl font-bold font-train-one text-[var(--color-dark-blue)]">
@@ -38,7 +38,7 @@ require __DIR__ . '/../_includes/head.php';
                     </form>
                 </div>
             </div>
-            <div class="absolute -z-1 bottom-0 right-0 md:w-[60vh] w-[50vh] max-w-full h-auto flex justify-center items-center">
+            <div class="absolute -z-1 bottom-0 right-0 md:w-[50%] sm:w-[70%] w-[85%] max-w-full h-auto flex justify-center items-center">
                 <img src="/assets/images/hero/hero.svg" alt="Hero image" class="w-full h-auto">
             </div>
             <div class="absolute -z-1 top-0 md:right-20 right-0 w-11 h-auto flex justify-center items-center 
@@ -56,14 +56,14 @@ require __DIR__ . '/../_includes/head.php';
                 ?>
             </div>
         </header>
-        <section class="container-sub flex flex-col justify-center items-center pt-20">
-            <a href="#" class="w-full h-auto flex flex-col justify-center items-start hover:underline">
+        <section class="container-sub flex flex-col justify-center items-center">
+            <a href="#" class="w-full h-auto flex flex-col justify-center items-start hover:underline pt-15 md:pt-20">
                 <?php
                 $page_topic = "Most popular";
                 require __DIR__ . '/../_includes/page_topic.php';
                 ?>
             </a>
-            <div class="w-full h-auto grid grid-cols-2 md:grid-cols-4 gap-x-20 gap-y-10 md:gap-y-0 md:gap-x-10">
+            <div class="w-full h-auto product-grid">
                 <?php
                 $price = "9.99";
                 require __DIR__ . '/../_includes/main_product_display.php';
@@ -73,14 +73,14 @@ require __DIR__ . '/../_includes/head.php';
                 ?>
             </div>
         </section>
-        <section class="container-sub flex flex-col justify-center items-center pt-20">
-            <a href="#" class="w-full h-auto flex flex-col justify-center items-start hover:underline">
+        <section class="container-sub flex flex-col justify-center items-center">
+            <a href="#" class="w-full h-auto flex flex-col justify-center items-start hover:underline pt-15 md:pt-20">
                 <?php
                 $page_topic = "Newest";
                 require __DIR__ . '/../_includes/page_topic.php';
                 ?>
             </a>
-            <div class="w-full h-auto grid grid-cols-2 md:grid-cols-4 gap-x-20 gap-y-10 md:gap-y-0 md:gap-x-10">
+            <div class="w-full h-auto product-grid">
                 <?php
                 require __DIR__ . '/../_includes/main_product_display.php';
                 require __DIR__ . '/../_includes/main_product_display.php';
@@ -89,14 +89,14 @@ require __DIR__ . '/../_includes/head.php';
                 ?>
             </div>
         </section>
-        <section class="container-sub flex flex-col justify-center items-center pt-20">
-            <a href="#" class="w-full h-auto flex flex-col justify-center items-start hover:underline">
+        <section class="container-sub flex flex-col justify-center items-center">
+            <a href="#" class="w-full h-auto flex flex-col justify-center items-start hover:underline pt-15 md:pt-20">
                 <?php
                 $page_topic = "Fan favorites";
                 require __DIR__ . '/../_includes/page_topic.php';
                 ?>
             </a>
-            <div class="w-full h-auto grid grid-cols-2 md:grid-cols-4 gap-x-20 gap-y-10 md:gap-y-0 md:gap-x-10">
+            <div class="w-full h-auto product-grid">
                 <?php
                 require __DIR__ . '/../_includes/main_product_display.php';
                 require __DIR__ . '/../_includes/main_product_display.php';
