@@ -62,20 +62,66 @@ require __DIR__ . '/../_includes/head.php';
                 </div>
             </div>
         </div>
-        <div class="w-full h-auto flex flex-col justify-start items-center mt-40">
+        <div class="w-full h-auto flex justify-start items-center gap-2 mt-20">
+            <a href="#" class="w-16 sm:w-20 aspect-square flex justify-center items-center overflow-hidden border-4 border-[var(--color-low-orange)] 
+            hover:border-[var(--color-orange)] ease-linear duration-100">
+                <img src="/assets/images/users/user.jpg" alt="Profile picture of user" class="min-w-full min-h-full">
+            </a>
+            <div class="flex flex-col justify-start w-auto h-auto gap-1">
+                <p class="text-xs text-[var(--color-dark-blue-bg)]">Creator</p>
+                <a href="#" class=" text-xs sm:text-sm text-[var(--color-dark-blue)]">Annie Norman</a>
+            </div>
+        </div>
+        <div class="w-full h-auto flex flex-col justify-start items-center mt-20">
             <div class="w-full h-auto flex justify-start items-center mb-10">
                 <h3 class="text-[var(--color-dark-blue)]">Description</h3>
             </div>
             <div class="w-full h-auto flex flex-col justify-start items-start">
                 <input id="read-more" type="checkbox" class="hidden peer">
-                <p class="text-sm/7 text-[var(--color-dark-blue)] line-clamp-2 peer-checked:line-clamp-none">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores tenetur labore culpa assumenda beatae tempora autem ullam nostrum dolores, incidunt corrupti dolor suscipit alias iure voluptatem facilis! Minus harum, sunt aperiam hic incidunt dolores nulla.
+                <p class="text-xs/7 text-[var(--color-dark-blue)] line-clamp-2 peer-checked:line-clamp-none">
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe ab ex consectetur, quibusdam dolores quod ipsum animi repudiandae ut quaerat quas quae autem nemo velit assumenda nulla, provident accusamus ullam voluptatum suscipit tempore. Quis hic aliquam labore, et nesciunt molestiae laudantium numquam odit officia a? Suscipit rem, enim nobis reprehenderit, ducimus eveniet asperiores cum quisquam vitae, praesentium itaque modi consequatur. Reiciendis modi quod fugiat unde veritatis incidunt non tempora labore commodi quaerat, voluptatum vel officia molestiae excepturi quae repudiandae, et dignissimos itaque eligendi. Asperiores veritatis ab non cupiditate! Sint, enim consequatur magni quas obcaecati officiis modi veritatis expedita quos officia, asperiores quod voluptate sit. Quam eos nihil deleniti dolorum animi nostrum pariatur? Odit iste repudiandae maiores minus sed asperiores earum sunt perspiciatis voluptatibus architecto aliquam consequuntur alias, veritatis blanditiis ratione dolores ipsa magnam suscipit. Fugiat, impedit molestias enim dicta aspernatur, consequatur ut distinctio at possimus iure culpa, nulla facere excepturi!
                 </p>
                 <label for="read-more" class="text-[var(--color-orange)] hover:underline ease-linear duration-100 
                 cursor-pointer text-xs mt-1.5">
                     Read more
                 </label>
             </div>
+        </div>
+        <div class="w-full h-auto flex flex-col justify-start items-center mt-20">
+            <div class="w-full h-auto flex justify-start items-center mb-10">
+                <h3 class="text-[var(--color-dark-blue)]">Reviews</h3>
+                <p class="text-[var(--color-dark-blue-bg)] text-sm ml-1.5">(10)</p>
+            </div>
+            <div class="w-full h-auto justify-start items-center">
+                <p class="text-5xl text-[var(--color-dark-blue)]">4&#47;<span class="text-[var(--color-orange)] text-2xl">5</span></p>
+            </div>
+            <div class="w-full h-auto flex flex-col justify-start items-start gap-10 mt-14">
+                <?php
+                for ($i = 0; $i < 5; $i++) {
+                    require __DIR__ . '/../_includes/review.php';
+                }
+                ?>
+                <a href="#" class="text-sm text-[var(--color-orange)] hover:underline ease-linear duration-100 cursor-pointer">
+                    See all
+                </a>
+            </div>
+        </div>
+    </section>
+    <section class="container-sub flex flex-col justify-center items-center">
+        <a href="#" class="w-full h-auto flex flex-col justify-center items-start hover:underline pt-15 md:pt-20">
+            <?php
+            $page_topic = "Related tracks";
+            require __DIR__ . '/../_includes/page_topic.php';
+            ?>
+        </a>
+        <div class="w-full h-auto product-grid">
+            <?php
+            $price = "9.99";
+            require __DIR__ . '/../_includes/main_product_display.php';
+            require __DIR__ . '/../_includes/main_product_display.php';
+            require __DIR__ . '/../_includes/main_product_display.php';
+            require __DIR__ . '/../_includes/main_product_display.php';
+            ?>
         </div>
     </section>
     <?php
