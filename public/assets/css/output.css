@@ -378,20 +378,8 @@
   .w-0 {
     width: calc(var(--spacing) * 0);
   }
-  .w-1 {
-    width: calc(var(--spacing) * 1);
-  }
-  .w-1\/2 {
-    width: calc(1/2 * 100%);
-  }
-  .w-1\/5 {
-    width: calc(1/5 * 100%);
-  }
   .w-2 {
     width: calc(var(--spacing) * 2);
-  }
-  .w-2\/5 {
-    width: calc(2/5 * 100%);
   }
   .w-2\/6 {
     width: calc(2/6 * 100%);
@@ -402,14 +390,8 @@
   .w-5 {
     width: calc(var(--spacing) * 5);
   }
-  .w-5\/12 {
-    width: calc(5/12 * 100%);
-  }
   .w-6 {
     width: calc(var(--spacing) * 6);
-  }
-  .w-7 {
-    width: calc(var(--spacing) * 7);
   }
   .w-8 {
     width: calc(var(--spacing) * 8);
@@ -525,24 +507,6 @@
   .gap-10 {
     gap: calc(var(--spacing) * 10);
   }
-  .gap-16 {
-    gap: calc(var(--spacing) * 16);
-  }
-  .gap-28 {
-    gap: calc(var(--spacing) * 28);
-  }
-  .gap-x-10 {
-    column-gap: calc(var(--spacing) * 10);
-  }
-  .gap-x-20 {
-    column-gap: calc(var(--spacing) * 20);
-  }
-  .gap-x-28 {
-    column-gap: calc(var(--spacing) * 28);
-  }
-  .gap-y-20 {
-    row-gap: calc(var(--spacing) * 20);
-  }
   .truncate {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -601,9 +565,6 @@
   }
   .bg-\[var\(--color-orange\)\] {
     background-color: var(--color-orange);
-  }
-  .bg-\[var\] {
-    background-color: var;
   }
   .bg-transparent {
     background-color: transparent;
@@ -864,6 +825,11 @@
       margin-left: calc(var(--spacing) * 10);
     }
   }
+  .sm\:w-1\/2 {
+    @media (width >= 40rem) {
+      width: calc(1/2 * 100%);
+    }
+  }
   .sm\:w-20 {
     @media (width >= 40rem) {
       width: calc(var(--spacing) * 20);
@@ -960,6 +926,21 @@
       display: none;
     }
   }
+  .md\:w-1\/2 {
+    @media (width >= 48rem) {
+      width: calc(1/2 * 100%);
+    }
+  }
+  .md\:w-2\/6 {
+    @media (width >= 48rem) {
+      width: calc(2/6 * 100%);
+    }
+  }
+  .md\:w-5\/12 {
+    @media (width >= 48rem) {
+      width: calc(5/12 * 100%);
+    }
+  }
   .md\:w-7 {
     @media (width >= 48rem) {
       width: calc(var(--spacing) * 7);
@@ -983,11 +964,6 @@
   .md\:w-\[50\%\] {
     @media (width >= 48rem) {
       width: 50%;
-    }
-  }
-  .md\:grid-cols-2 {
-    @media (width >= 48rem) {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
   .md\:flex-row {
@@ -1023,11 +999,6 @@
   .md\:gap-28 {
     @media (width >= 48rem) {
       gap: calc(var(--spacing) * 28);
-    }
-  }
-  .md\:gap-x-28 {
-    @media (width >= 48rem) {
-      column-gap: calc(var(--spacing) * 28);
     }
   }
   .md\:bg-transparent {

@@ -29,4 +29,13 @@ class CartController extends Controller
         ];
         $this->view("collections", $data);
     }
+
+    public function album()
+    {
+        $data = [
+            "user" => $this->user,
+            "page_topic" => "Album"
+        ];
+        $this->view("album", $data);
+    }
 }

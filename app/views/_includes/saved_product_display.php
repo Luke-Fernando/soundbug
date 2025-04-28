@@ -25,7 +25,7 @@
             <p class="text-sm text-[var(--color-dark-blue)]">&#36; <span>05.99</span></p>
         </div>
         <div class="w-full h-auto flex justify-start items-start">
-            <p class="text-sm text-[var(--color-dark-blue)]">
+            <p class="text-sm text-[var(--color-dark-blue)] truncate">
                 Love like a flower
             </p>
         </div>

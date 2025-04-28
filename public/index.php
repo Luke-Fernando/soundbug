@@ -14,6 +14,7 @@ $router->register('/advanced-search', 'TrackController', 'advanced_search');
 $router->register('/track', 'TrackController', 'track');
 $router->register('/reviews', 'TrackController', 'reviews');
 $router->register('/collections', 'CartController', 'collections');
+$router->register('/album', 'CartController', 'album');
 
 try {
     $router->dispatch(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
