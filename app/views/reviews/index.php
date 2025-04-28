@@ -22,11 +22,11 @@ require __DIR__ . '/../_includes/head.php';
             ?>
         </div>
         <div class="w-full h-auto flex justify-start items-start gap-2">
-            <a href="#" class="w-16 aspect-square flex justify-center items-center overflow-hidden">
-                <img src="/assets/images/products/flower.jpg" alt="Profile picture of user" class="min-w-full min-h-full">
+            <a href="/track" class="w-16 aspect-square flex justify-center items-center overflow-hidden">
+                <img src="/assets/images/products/flower.jpg" alt="<?php echo $track_name . " image"; ?>" class="min-w-full min-h-full">
             </a>
             <div class="flex flex-col justify-start w-auto h-auto gap-1">
-                <a href="#" class=" text-xs sm:text-sm text-[var(--color-dark-blue)]">Love like a flower</a>
+                <a href="/track" class=" text-xs sm:text-sm text-[var(--color-dark-blue)]">Love like a flower</a>
                 <p class="text-4xl text-[var(--color-dark-blue)]">4&#47;<span class="text-[var(--color-orange)] text-2xl">5</span></p>
             </div>
         </div>
