@@ -1,4 +1,4 @@
-<div class="h-auto flex justify-start items-start gap-3 bg-[var(--color-grey-bg)] p-5">
+<div class="<?php echo $styles; ?> h-auto flex justify-start items-start gap-3 bg-[var(--color-grey-bg)] p-5">
     <div class="w-2/6 h-auto flex flex-col justify-center items-center gap-2">
         <div class="w-full aspect-square flex justify-center items-center overflow-hidden">
             <img src="/assets/images/products/flower.jpg" alt="" class="min-w-full min-h-full">
