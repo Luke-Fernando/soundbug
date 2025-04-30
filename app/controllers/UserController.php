@@ -13,3 +13,20 @@ profile() – View/edit profile
 changePassword() – Change password
 
 forgotPassword() – Handle password reset -->
+
+<?php
+class UserController extends Controller
+{
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    public function profile()
+    {
+        $data = [
+            'user' => $this->user,
+        ];
+        $this->view("profile", $data);
+    }
+}

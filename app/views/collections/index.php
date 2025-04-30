@@ -24,6 +24,7 @@ require __DIR__ . '/../_includes/head.php';
         <div class="w-full h-auto grid grid-cols-1 sm:grid-cols-2 gap-1">
             <?php
             for ($i = 0; $i < 15; $i++) {
+                $styles = "w-auto";
                 require __DIR__ . '/../_includes/saved_product_display.php';
             }
             ?>
