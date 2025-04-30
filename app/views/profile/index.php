@@ -31,17 +31,17 @@ require __DIR__ . '/../_includes/head.php';
             </div>
         </div>
         <div class="w-full h-auto flex lg:flex-row flex-col justify-center items-start mt-16 gap-5 lg:gap-0">
-            <div class="w-full lg:w-1/2 h-auto flex flex-col justify-start items-start box-border px-8">
+            <div class="w-full lg:w-1/2 h-auto flex flex-col justify-start items-start box-border sm:px-8">
                 <input type="checkbox" class="peer hidden" id="read-bio">
-                <p class="text-xs/7 text-[var(--color-dark-blue)] line-clamp-3 peer-checked:line-clamp-none">
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate tempora accusamus incidunt facere quibusdam fugiat, aliquid nesciunt ipsam, similique quam dicta asperiores sit? Repellat vitae repellendus voluptatibus nulla reiciendis veniam neque incidunt architecto harum? Error dolorum aliquid rerum beatae quia, voluptatum vel ipsam suscipit eum aliquam hic nihil enim natus!
+                <p class="text-xs/7 text-[var(--color-dark-blue)] line-clamp-6 peer-checked:line-clamp-none">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam quidem sequi nemo amet ipsa minus odit nisi veritatis commodi totam praesentium laborum recusandae, in reprehenderit alias nulla obcaecati adipisci. Nemo quis libero soluta beatae culpa maiores obcaecati suscipit accusantium aliquam temporibus, qui, veritatis at. Voluptas ducimus quisquam tempore similique natus nemo fugiat, ex dolor dolorem. Voluptates voluptatibus quasi placeat eligendi eum. Vero repellendus veniam eos harum quidem praesentium quaerat quasi et saepe quos consequatur libero quia, ducimus obcaecati dolore perferendis. Id impedit laboriosam voluptatem, neque eius similique fugit praesentium veritatis repudiandae temporibus quisquam. Delectus et ipsum adipisci dicta iste velit!
                 </p>
                 <label for="read-bio" class="text-xs text-[var(--color-dark-blue-bg)] underline hover:text-[var(--color-orange)] mt-1 
                 ease-linear duration-100">
                     Read more
                 </label>
             </div>
-            <div class="w-full lg:w-2/5 h-auto flex flex-col justify-center items-start box-border px-8">
+            <div class="w-full lg:w-2/5 h-auto flex flex-col justify-center items-start box-border sm:px-8">
                 <div class="w-full h-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-1">
                     <?php
                     for ($i = 0; $i < 4; $i++) {
