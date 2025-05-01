@@ -12,19 +12,19 @@
         </label>
         <div class="hidden peer-checked:flex md:flex justify-start items-start md:flex-row flex-col md:static absolute z-10 top-full right-0 pt-7.5 
         pb-5.5 px-5.5 md:p-0 md:bg-transparent bg-white border border-[var(--color-low-blue-bg)] md:border-0">
-            <a href="/home" class="text-sm md:text-sm text-[var(--color-dark-blue)] hover:text-[var(--color-orange)] ease-linear 
+            <a href="/home" class="text-xs md:text-sm text-[var(--color-dark-blue)] hover:text-[var(--color-orange)] ease-linear 
             duration-100 py-2 md:py-0 md:px-3">
                 Home
             </a>
-            <a href="/collections" class="text-sm md:text-sm text-[var(--color-dark-blue)] hover:text-[var(--color-orange)] ease-linear 
+            <a href="/collections" class="text-xs md:text-sm text-[var(--color-dark-blue)] hover:text-[var(--color-orange)] ease-linear 
             duration-100 py-2 md:py-0 md:px-3">
                 Collections
             </a>
-            <a href="/album" class="text-sm md:text-sm text-[var(--color-dark-blue)] hover:text-[var(--color-orange)] ease-linear 
+            <a href="/album" class="text-xs md:text-sm text-[var(--color-dark-blue)] hover:text-[var(--color-orange)] ease-linear 
             duration-100 py-2 md:py-0 md:px-3">
                 Album
             </a>
-            <div class="relative w-max h-auto flex justify-center items-center text-sm md:text-sm text-[var(--color-dark-blue)] 
+            <div class="relative w-max h-auto flex justify-center items-center text-xs md:text-sm text-[var(--color-dark-blue)] 
             hover:text-[var(--color-orange)] ease-linear duration-100 py-2 md:py-0 md:px-3">
                 <input id="account-dropdown-trigger" type="checkbox" class="hidden peer">
                 <label for="account-dropdown-trigger" class="text-inherit border-0 bg-transparent cursor-pointer peer-checked:text-[var(--color-orange)]">
