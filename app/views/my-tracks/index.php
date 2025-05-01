@@ -45,14 +45,13 @@ require __DIR__ . '/../_includes/head.php';
                             <path fill="currentColor" d="M19 9a3 3 0 0 0-2.82 2H3a1 1 0 0 0 0 2h13.18A3 3 0 1 0 19 9M3 7h1.18a3 3 0 0 0 5.64 0H21a1 1 0 0 0 0-2H9.82a3 3 0 0 0-5.64 0H3a1 1 0 0 0 0 2m18 10h-7.18a3 3 0 0 0-5.64 0H3a1 1 0 0 0 0 2h5.18a3 3 0 0 0 5.64 0H21a1 1 0 0 0 0-2" />
                         </svg>
                         <input id="option-<?php echo $i; ?>" type="checkbox" class="hidden peer">
-                        <div class="w-auto h-auto flex-col justify-center items-start bg-[var(--color-low-blue-bg)] absolute 
-                    top-1/2 left-full transform -translate-y-1/2 hidden peer-checked:flex px-3 py-4">
-                            <a href="/track/edit?id=<?php echo $i; ?>" class="text-xs text-[var(--color-dark-blue)] hover:underline ease-linear 
-                        duration-100 py-1">Edit</a>
-                            <a href="#" class="text-xs text-[var(--color-dark-blue)] hover:underline ease-linear 
-                        duration-100 py-1">Pause</a>
-                            <a href="#" class="text-xs text-[var(--color-dark-blue)] hover:underline ease-linear 
-                        duration-100 py-1">Delete</a>
+                        <div class="w-auto h-auto flex-col justify-center items-start bg-white border border-[var(--color-low-blue-bg)] absolute 
+                        top-1/2 left-full transform -translate-y-1/2 hidden peer-checked:flex px-3 py-4">
+                            <a href="/track/edit?id=<?php echo $i; ?>" class="text-xs text-[var(--color-dark-blue)] hover:text-[var(--color-orange)] ease-linear duration-100 py-1">Edit</a>
+                            <a href="#" class="text-xs text-[var(--color-dark-blue)] hover:text-[var(--color-orange)] ease-linear 
+                            duration-100 py-1">Pause</a>
+                            <a href="#" class="text-xs text-[var(--color-dark-blue)] hover:text-[var(--color-orange)] ease-linear 
+                            duration-100 py-1">Delete</a>
                         </div>
                     </label>
                     <?php

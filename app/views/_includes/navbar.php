@@ -11,7 +11,7 @@
             </svg>
         </label>
         <div class="hidden peer-checked:flex md:flex justify-start items-start md:flex-row flex-col md:static absolute z-10 top-full right-0 pt-7.5 
-        pb-5.5 px-5.5 md:p-0 md:bg-transparent bg-[var(--color-grey-bg)]">
+        pb-5.5 px-5.5 md:p-0 md:bg-transparent bg-white border border-[var(--color-low-blue-bg)] md:border-0">
             <a href="/home" class="text-sm md:text-sm text-[var(--color-dark-blue)] hover:text-[var(--color-orange)] ease-linear 
             duration-100 py-2 md:py-0 md:px-3">
                 Home
@@ -31,16 +31,16 @@
                     Account
                 </label>
                 <div id="account-dropdown" class="peer-checked:flex w-auto h-auto flex-col justify-center items-start absolute top-0 right-[110%] md:top-full md:right-0 hidden 
-                bg-[var(--color-grey-bg)] p-5.5 text-[var(--color-dark-blue)] text-xs">
+                bg-white border border-[var(--color-low-blue-bg)] py-6 px-4 text-[var(--color-dark-blue)] text-xs">
                     <?php if ($user != null) { ?>
-                        <a href="/account" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-2">Account</a>
-                        <a href="/profile" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-2">Profile</a>
-                        <a href="/stats" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-2">Stats</a>
-                        <a href="/my-tracks" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-2">My tracks</a>
-                        <a href="/signout" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-2">Signout</a>
+                        <a href="/account" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-1">Account</a>
+                        <a href="/profile" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-1">Profile</a>
+                        <a href="/stats" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-1">Stats</a>
+                        <a href="/my-tracks" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-1">My tracks</a>
+                        <a href="/signout" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-1">Signout</a>
                     <?php } else { ?>
-                        <a href="/signin" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-2">Signin</a>
-                        <a href="/signup" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-2">Signup</a>
+                        <a href="/signin" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-1">Signin</a>
+                        <a href="/signup" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-1">Signup</a>
                     <?php } ?>
                 </div>
             </div>

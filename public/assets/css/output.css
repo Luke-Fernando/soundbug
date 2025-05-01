@@ -8,6 +8,7 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-white: #fff;
     --spacing: 0.25rem;
     --container-3xs: 16rem;
     --text-xs: 0.75rem;
@@ -219,9 +220,6 @@
   .right-\[110\%\] {
     right: 110%;
   }
-  .right-full {
-    right: 100%;
-  }
   .bottom-0 {
     bottom: calc(var(--spacing) * 0);
   }
@@ -257,9 +255,6 @@
   }
   .my-4 {
     margin-block: calc(var(--spacing) * 4);
-  }
-  .my-5 {
-    margin-block: calc(var(--spacing) * 5);
   }
   .my-28 {
     margin-block: calc(var(--spacing) * 28);
@@ -527,14 +522,6 @@
     --tw-translate-y: calc(calc(1/2 * 100%) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
-  .translate-y-1 {
-    --tw-translate-y: calc(var(--spacing) * 1);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
-  .translate-y-1\/2 {
-    --tw-translate-y: calc(1/2 * 100%);
-    translate: var(--tw-translate-x) var(--tw-translate-y);
-  }
   .-rotate-\[20deg\] {
     rotate: calc(20deg * -1);
   }
@@ -691,6 +678,9 @@
   .bg-transparent {
     background-color: transparent;
   }
+  .bg-white {
+    background-color: var(--color-white);
+  }
   .p-1 {
     padding: calc(var(--spacing) * 1);
   }
@@ -702,9 +692,6 @@
   }
   .p-5\.5 {
     padding: calc(var(--spacing) * 5.5);
-  }
-  .px-1 {
-    padding-inline: calc(var(--spacing) * 1);
   }
   .px-2 {
     padding-inline: calc(var(--spacing) * 2);
@@ -718,6 +705,9 @@
   .px-3\.5 {
     padding-inline: calc(var(--spacing) * 3.5);
   }
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
+  }
   .px-5 {
     padding-inline: calc(var(--spacing) * 5);
   }
@@ -729,12 +719,6 @@
   }
   .px-10 {
     padding-inline: calc(var(--spacing) * 10);
-  }
-  .py-0 {
-    padding-block: calc(var(--spacing) * 0);
-  }
-  .py-0\.5 {
-    padding-block: calc(var(--spacing) * 0.5);
   }
   .py-1 {
     padding-block: calc(var(--spacing) * 1);
@@ -753,6 +737,12 @@
   }
   .py-5 {
     padding-block: calc(var(--spacing) * 5);
+  }
+  .py-5\.5 {
+    padding-block: calc(var(--spacing) * 5.5);
+  }
+  .py-6 {
+    padding-block: calc(var(--spacing) * 6);
   }
   .py-8 {
     padding-block: calc(var(--spacing) * 8);
@@ -921,6 +911,11 @@
   .peer-checked\:text-\[var\(--color-orange\)\] {
     &:is(:where(.peer):checked ~ *) {
       color: var(--color-orange);
+    }
+  }
+  .peer-checked\:underline {
+    &:is(:where(.peer):checked ~ *) {
+      text-decoration-line: underline;
     }
   }
   .before\:absolute {
@@ -1279,6 +1274,12 @@
   .md\:gap-28 {
     @media (width >= 48rem) {
       gap: calc(var(--spacing) * 28);
+    }
+  }
+  .md\:border-0 {
+    @media (width >= 48rem) {
+      border-style: var(--tw-border-style);
+      border-width: 0px;
     }
   }
   .md\:bg-transparent {
