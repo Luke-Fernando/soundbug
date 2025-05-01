@@ -29,4 +29,12 @@ class UserController extends Controller
         ];
         $this->view("profile", $data);
     }
+
+    public function account()
+    {
+        $data = [
+            'user' => $this->user
+        ];
+        $this->view("account", $data);
+    }
 }
