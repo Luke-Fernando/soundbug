@@ -61,4 +61,13 @@ class TrackController extends Controller
         ];
         $this->view("reviews", $data);
     }
+
+    public function my_tracks()
+    {
+        $data = [
+            "user" => $this->user,
+            "page_topic" => "My Tracks"
+        ];
+        $this->view("my-tracks", $data);
+    }
 }
