@@ -119,10 +119,10 @@ require __DIR__ . '/../_includes/head.php';
                 </div>
             </div>
             <div class="w-full h-auto flex justify-end items-center">
-                <button class="text-xs md:text-sm text-[var(--color-grey-bg)] px-3 py-3 hover:bg-[var(--color-orange)] 
-                bg-[var(--color-dark-blue-bg)] ease-linear duration-100">
-                    Save
-                </button>
+                <?php
+                $btn_text = "Save";
+                require __DIR__ . '/../_includes/primary-btn.php';
+                ?>
             </div>
         </div>
     </section>
