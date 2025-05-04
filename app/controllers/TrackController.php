@@ -70,4 +70,22 @@ class TrackController extends Controller
         ];
         $this->view("my-tracks", $data);
     }
+
+    public function add_track()
+    {
+        $data = [
+            "user" => $this->user,
+            "page_topic" => "Add Track"
+        ];
+        $this->view("add-track", $data);
+    }
+
+    public function edit_track()
+    {
+        $data = [
+            "user" => $this->user,
+            "page_topic" => "Edit Track"
+        ];
+        $this->view("edit-track", $data);
+    }
 }
