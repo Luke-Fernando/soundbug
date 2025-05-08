@@ -64,8 +64,8 @@ require __DIR__ . '/../../_includes/head.php';
                             </a>
                         </div>
                         <div class="col-span-3 py-2 flex justify-center items-center box-border px-2.5">
-                            <input type="checkbox" id="track-preview" class="peer hidden">
-                            <label for="track-preview" class="w-8 aspect-square flex justify-center items-center text-[var(--color-dark-blue-bg)] 
+                            <input type="checkbox" id="track-preview-<?php echo $i; ?>" class="peer hidden">
+                            <label for="track-preview-<?php echo $i; ?>" class="w-8 aspect-square flex justify-center items-center text-[var(--color-dark-blue-bg)] 
                             hover:text-[var(--color-orange)] ease-linear duration-100 peer-checked:text-[var(--color-orange)] 
                             peer-checked:scale-95">
                                 <?php
