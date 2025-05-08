@@ -11,3 +11,20 @@ manageTracks() – Approve/edit/delete tracks
 viewOrders() – View all site orders
 
 siteSettings() – Configure site-wide settings -->
+<?php
+class AdminController extends Controller
+{
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    public function tracks()
+    {
+        $data = [
+            "user" => $this->user
+        ];
+
+        $this->view("admin/tracks", $data);
+    }
+}

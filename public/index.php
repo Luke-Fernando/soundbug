@@ -21,6 +21,8 @@ $router->register('/my-tracks', 'TrackController', 'my_tracks');
 $router->register('/track/add', 'TrackController', 'add_track');
 $router->register('/track/edit', 'TrackController', 'edit_track');
 $router->register('/user/stats', 'ReportController', 'stats');
+$router->register('/admin', 'AdminController', 'tracks');
+$router->register('/admin/tracks', 'AdminController', 'tracks');
 
 try {
     $router->dispatch(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
