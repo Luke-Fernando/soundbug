@@ -24,6 +24,7 @@ $router->register('/user/stats', 'ReportController', 'stats');
 $router->register('/admin', 'AdminController', 'tracks');
 $router->register('/admin/tracks', 'AdminController', 'tracks');
 $router->register('/admin/users', 'AdminController', 'users');
+$router->register('/admin/operators', 'AdminController', 'operators');
 
 try {
     $router->dispatch(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
