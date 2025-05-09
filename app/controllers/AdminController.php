@@ -27,4 +27,13 @@ class AdminController extends Controller
 
         $this->view("admin/tracks", $data);
     }
+
+    public function users()
+    {
+        $data = [
+            "user" => $this->user
+        ];
+
+        $this->view("admin/users", $data);
+    }
 }

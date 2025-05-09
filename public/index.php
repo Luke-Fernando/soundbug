@@ -23,6 +23,7 @@ $router->register('/track/edit', 'TrackController', 'edit_track');
 $router->register('/user/stats', 'ReportController', 'stats');
 $router->register('/admin', 'AdminController', 'tracks');
 $router->register('/admin/tracks', 'AdminController', 'tracks');
+$router->register('/admin/users', 'AdminController', 'users');
 
 try {
     $router->dispatch(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
