@@ -45,4 +45,13 @@ class AdminController extends Controller
 
         $this->view("admin/operators", $data);
     }
+
+    public function stats()
+    {
+        $data = [
+            "user" => $this->user
+        ];
+
+        $this->view("admin/stats", $data);
+    }
 }
