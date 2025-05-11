@@ -29,6 +29,7 @@ $router->register('/admin/stats', 'AdminController', 'stats');
 $router->register('/signup', 'UserController', 'signup');
 $router->register('/signin', 'UserController', 'signin');
 $router->register('/reset-password', 'UserController', 'reset_password');
+$router->register('/admin/signin', 'AdminController', 'signin');
 
 try {
     $router->dispatch(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
