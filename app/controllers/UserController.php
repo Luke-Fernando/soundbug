@@ -37,4 +37,22 @@ class UserController extends Controller
         ];
         $this->view("account", $data);
     }
+
+    public function signup()
+    {
+        $data = [];
+        $this->view("signup", $data);
+    }
+
+    public function signin()
+    {
+        $data = [];
+        $this->view("signin", $data);
+    }
+
+    public function reset_password()
+    {
+        $data = [];
+        $this->view("reset-password", $data);
+    }
 }
