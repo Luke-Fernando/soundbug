@@ -88,4 +88,20 @@ class TrackController extends Controller
         ];
         $this->view("edit-track", $data);
     }
+
+    public function add_review()
+    {
+        $data = [
+            "user" => $this->user,
+        ];
+        $this->view("reviews/add", $data);
+    }
+
+    public function edit_review()
+    {
+        $data = [
+            "user" => $this->user,
+        ];
+        $this->view("reviews/edit", $data);
+    }
 }

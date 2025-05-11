@@ -248,9 +248,6 @@
   .left-1\/2 {
     left: calc(1/2 * 100%);
   }
-  .left-20 {
-    left: calc(var(--spacing) * 20);
-  }
   .left-full {
     left: 100%;
   }
@@ -464,11 +461,11 @@
   .h-9 {
     height: calc(var(--spacing) * 9);
   }
+  .h-10 {
+    height: calc(var(--spacing) * 10);
+  }
   .h-14 {
     height: calc(var(--spacing) * 14);
-  }
-  .h-\[50vh\] {
-    height: 50vh;
   }
   .h-auto {
     height: auto;
@@ -556,9 +553,6 @@
   }
   .w-\[50\%\] {
     width: 50%;
-  }
-  .w-\[50vw\] {
-    width: 50vw;
   }
   .w-\[78\%\] {
     width: 78%;
@@ -726,9 +720,6 @@
   .gap-y-5 {
     row-gap: calc(var(--spacing) * 5);
   }
-  .gap-y-10 {
-    row-gap: calc(var(--spacing) * 10);
-  }
   .truncate {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -858,12 +849,6 @@
   }
   .px-10 {
     padding-inline: calc(var(--spacing) * 10);
-  }
-  .px-20 {
-    padding-inline: calc(var(--spacing) * 20);
-  }
-  .px-32 {
-    padding-inline: calc(var(--spacing) * 32);
   }
   .py-1 {
     padding-block: calc(var(--spacing) * 1);
@@ -1058,11 +1043,6 @@
       display: flex;
     }
   }
-  .peer-checked\:grid {
-    &:is(:where(.peer):checked ~ *) {
-      display: grid;
-    }
-  }
   .peer-checked\:hidden {
     &:is(:where(.peer):checked ~ *) {
       display: none;
@@ -1092,6 +1072,11 @@
   .peer-checked\:border-\[var\(--color-orange\)\] {
     &:is(:where(.peer):checked ~ *) {
       border-color: var(--color-orange);
+    }
+  }
+  .peer-checked\:bg-\[var\(--color-orange\)\] {
+    &:is(:where(.peer):checked ~ *) {
+      background-color: var(--color-orange);
     }
   }
   .peer-checked\:text-\[var\(--color-orange\)\] {
@@ -1306,11 +1291,6 @@
       gap: calc(var(--spacing) * 16);
     }
   }
-  .sm\:gap-y-3 {
-    @media (width >= 40rem) {
-      row-gap: calc(var(--spacing) * 3);
-    }
-  }
   .sm\:gap-y-10 {
     @media (width >= 40rem) {
       row-gap: calc(var(--spacing) * 10);
@@ -1521,16 +1501,6 @@
   .md\:px-20 {
     @media (width >= 48rem) {
       padding-inline: calc(var(--spacing) * 20);
-    }
-  }
-  .md\:px-24 {
-    @media (width >= 48rem) {
-      padding-inline: calc(var(--spacing) * 24);
-    }
-  }
-  .md\:px-28 {
-    @media (width >= 48rem) {
-      padding-inline: calc(var(--spacing) * 28);
     }
   }
   .md\:px-32 {
