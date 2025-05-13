@@ -2,23 +2,16 @@
 class Model
 {
 
-    protected $env;
     protected $connection;
 
-    public function __construct()
-    {
-        $this->env = new Environment();
-        $this->set_connection();
-    }
-
-    private function set_connection()
+    public function set_connection()
     {
         if (!isset($this->connection)) {
-            $host = $this->env->get_env("DB_HOST");
-            $username = $this->env->get_env("DB_USERNAME");
-            $password = $this->env->get_env("DB_PASSWORD");
-            $database = $this->env->get_env("DB_NAME");
-            $port = $this->env->get_env("DB_PORT");
+            $host = Environment::get_env("DB_HOST");
+            $username = Environment::get_env("DB_USERNAME");
+            $password = Environment::get_env("DB_PASSWORD");
+            $database = Environment::get_env("DB_NAME");
+            $port = Environment::get_env("DB_PORT");
             try {
                 $this->connection = new mysqli($host, $username, $password, $database, $port);
             } catch (Exception $ex) {
@@ -29,6 +22,9 @@ class Model
 
     public function iud($query, $paraArr)
     {
+        if ($this->connection == null) {
+            $this->set_connection();
+        }
         $stmt = $this->connection->prepare($query);
         $paramTypes = str_repeat('s', count($paraArr));
         if (!empty($paraArr)) {
@@ -43,6 +39,9 @@ class Model
 
     public function search($query, $paraArr)
     {
+        if ($this->connection == null) {
+            $this->set_connection();
+        }
         $stmt = $this->connection->prepare($query);
         $paramTypes = str_repeat('s', count($paraArr));
         if (!empty($paraArr)) {

@@ -2,9 +2,9 @@
 class Environment
 {
 
-    protected $dotenv;
+    protected static $dotenv;
 
-    private function __construct()
+    public static function init()
     {
         try {
             $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../');
@@ -14,8 +14,11 @@ class Environment
         }
     }
 
-    public function get_env($key)
+    public static function get_env($key)
     {
+        if (self::$dotenv == null) {
+            self::init();
+        }
         return $_ENV[$key];
     }
 }

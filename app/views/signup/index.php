@@ -14,7 +14,7 @@ require __DIR__ . '/../_includes/head.php';
         $page_topic = "Sign Up";
         require __DIR__ . '/../_includes/page_topic.php';
         ?>
-        <form action="#" class="w-full h-auto grid grid-cols-2 gap-y-5 sm:gap-y-10 gap-x-5">
+        <div class="w-full h-auto grid grid-cols-2 gap-y-5 sm:gap-y-10 gap-x-5">
             <div class="col-span-2 sm:col-span-1 h-auto flex flex-col justify-start items-start gap-2 sm:gap-3.5">
                 <label for="first-name" class="text-[var(--color-dark-blue)] text-sm">
                     First name
@@ -125,7 +125,7 @@ require __DIR__ . '/../_includes/head.php';
                 require __DIR__ . '/../_includes/primary-btn.php';
                 ?>
             </div>
-        </form>
+        </div>
     </section>
     <?php
     require __DIR__ . '/../_includes/footer.php';

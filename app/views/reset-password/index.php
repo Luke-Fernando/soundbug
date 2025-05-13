@@ -14,7 +14,7 @@ require __DIR__ . '/../_includes/head.php';
         $page_topic = "Reset Password";
         require __DIR__ . '/../_includes/page_topic.php';
         ?>
-        <form action="#" class="w-full h-auto grid grid-cols-1 gap-y-5 sm:gap-y-10 gap-x-5 box-border md:px-32">
+        <div class="w-full h-auto grid grid-cols-1 gap-y-5 sm:gap-y-10 gap-x-5 box-border md:px-32">
             <div class="col-span-1 h-auto flex flex-col justify-start items-start gap-2 sm:gap-3.5">
                 <label for="email" class="text-[var(--color-dark-blue)] text-sm">
                     Email
@@ -78,7 +78,7 @@ require __DIR__ . '/../_includes/head.php';
                 require __DIR__ . '/../_includes/primary-btn.php';
                 ?>
             </div>
-        </form>
+        </div>
     </section>
     <?php
     require __DIR__ . '/../_includes/footer.php';
