@@ -5,7 +5,7 @@ class UserController extends Controller
     public function __construct()
     {
         parent::__construct();
-        $this->model_holder = $this->model("UserModel");
+        $this->model_handler = $this->model("UserModel");
     }
 
     public function profile()
@@ -26,7 +26,8 @@ class UserController extends Controller
 
     public function signup()
     {
-        $data = [];
+        $countries = $this->model_handler->get_countries();
+        $data = ['countries' => $countries];
         $this->view("signup", $data);
     }
 
@@ -120,7 +121,7 @@ class UserController extends Controller
                             'country' => $country,
                             'password' => $password,
                         ];
-                        $model_result = $this->model_holder->signup_proccess($data);
+                        $model_result = $this->model_handler->signup_proccess($data);
 
                         if ($model_result['status']) {
                             $response['status'] = 'success';

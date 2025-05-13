@@ -6,6 +6,22 @@ class UserModel extends Model
         // parent::__construct();
     }
 
+    public function get_countries()
+    {
+        $countries = [];
+
+        $country_resultset = $this->search("SELECT * FROM country;", []);
+        $country_num = $country_resultset->num_rows;
+
+        if ($country_num > 0) {
+            for ($i = 0; $i < $country_num; $i++) {
+                $country = $country_resultset->fetch_assoc();
+                array_push($countries, ["id" => $country['id'], "name" => $country['country']]);
+            }
+            return $countries;
+        }
+    }
+
     public function signup_proccess($data)
     {
         extract($data);

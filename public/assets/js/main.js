@@ -156,6 +156,14 @@ function signup() {
         let spinner = await proccessSpinner();
         let response = await post(formData, "/api/user/signup");
         proccessSpinner(spinner);
-        console.log(response);
+        console.log(JSON.parse(response));
+        let responseObj = JSON.parse(response);
+        if (responseObj.status == "success") {
+            showAlert("/assets/js/components/alert.html", "Successfully signed up");
+        } else if (responseObj.status == "error") {
+            showAlert("/assets/js/components/alert.html", responseObj.message);
+        } else {
+            showAlert("/assets/js/components/alert.html", "Something went wrong");
+        }
     });
 }

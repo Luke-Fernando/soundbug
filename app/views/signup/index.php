@@ -57,16 +57,15 @@ require __DIR__ . '/../_includes/head.php';
                 <select name="country" id="country" class="w-full h-8 bg-[var(--color-low-blue-bg)] box-border px-3 border-0 
                     ring-0 focus:ring-2 focus:ring-[var(--color-orange)] outline-0 text-[var(--color-dark-blue-bg)] text-xs">
                     <option value="" selected>Select your country</option>
-                    <option value="AF">Afghanistan</option>
-                    <option value="AX">Aland Islands</option>
-                    <option value="AL">Albania</option>
-                    <option value="DZ">Algeria</option>
-                    <option value="AS">American Samoa</option>
-                    <option value="AD">Andorra</option>
-                    <option value="AO">Angola</option>
-                    <option value="AI">Anguilla</option>
-                    <option value="AQ">Antarctica</option>
-                    <option value="AG">Antigua and Barbuda</option>
+                    <?php
+                    foreach ($countries as $country) {
+                        $id = $country['id'];
+                        $name = $country['name'];
+                    ?>
+                        <option value="<?php echo $id ?>"><?php echo $name ?></option>
+                    <?php
+                    }
+                    ?>
                 </select>
             </div>
             <div class="col-span-2 sm:col-span-1 h-auto flex flex-col justify-start items-start gap-2 sm:gap-3.5 relative">

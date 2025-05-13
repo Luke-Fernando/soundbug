@@ -3,7 +3,7 @@ class Controller
 {
 
     protected $user;
-    protected $model_holder;
+    protected $model_handler;
 
     public function __construct()
     {
