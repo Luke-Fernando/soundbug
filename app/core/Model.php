@@ -7,11 +7,15 @@ class Model
     public function set_connection()
     {
         if (!isset($this->connection)) {
-            $host = Environment::get_env("DB_HOST");
-            $username = Environment::get_env("DB_USERNAME");
-            $password = Environment::get_env("DB_PASSWORD");
-            $database = Environment::get_env("DB_NAME");
-            $port = Environment::get_env("DB_PORT");
+            try {
+                $host = Environment::get_env("DB_HOST");
+                $username = Environment::get_env("DB_USERNAME");
+                $password = Environment::get_env("DB_PASSWORD");
+                $database = Environment::get_env("DB_NAME");
+                $port = Environment::get_env("DB_PORT");
+            } catch (Exception $ex) {
+                throw new Exception($ex->getMessage());
+            }
             try {
                 $this->connection = new mysqli($host, $username, $password, $database, $port);
             } catch (Exception $ex) {

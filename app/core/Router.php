@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . "/../../vendor/autoload.php";
 require_once __DIR__ . "/../helpers/Environment.php";
 require_once __DIR__ . "/../core/Controller.php";
 require_once __DIR__ . "/../core/Model.php";
@@ -20,6 +21,7 @@ class Router
                 try {
                     require_once __DIR__ . "/../controllers/" . $route["controller"] . ".php";
                     $controller = new $route["controller"]();
+
                     try {
                         $controller->{$route["action"]}();
                     } catch (Exception $ex) {

@@ -32,9 +32,10 @@ $router->register('/reset-password', 'UserController', 'reset_password');
 $router->register('/admin/signin', 'AdminController', 'signin');
 $router->register('/reviews/add', 'TrackController', 'add_review');
 $router->register('/reviews/edit', 'TrackController', 'edit_review');
-
-try {
-    $router->dispatch(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
-} catch (Exception $ex) {
-    throw new Exception($ex->getMessage());
-}
+$router->register('/api/user/signup', 'UserController', 'signup_proccess');
+// try {
+//     $router->dispatch(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+// } catch (Exception $ex) {
+//     throw new Exception($ex->getMessage());
+// }
+$router->dispatch(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));

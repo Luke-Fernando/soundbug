@@ -5,7 +5,7 @@ $head_title = "SoundBug | Sign Up";
 require __DIR__ . '/../_includes/head.php';
 ?>
 
-<body>
+<body data-handler="signup">
     <?php
     require __DIR__ . '/../_includes/navbar.php';
     ?>
@@ -122,6 +122,8 @@ require __DIR__ . '/../_includes/head.php';
                 </p>
                 <?php
                 $btn_text = "Sign Up";
+                $id = "send";
+                $type = "submit";
                 require __DIR__ . '/../_includes/primary-btn.php';
                 ?>
             </div>

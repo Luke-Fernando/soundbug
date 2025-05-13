@@ -1,19 +1,3 @@
-<!-- Handles all user-related actions (account and profile).
-
-Functions:
-
-register() – Sign up new users
-
-login() – Sign in users
-
-logout() – Log out current user
-
-profile() – View/edit profile
-
-changePassword() – Change password
-
-forgotPassword() – Handle password reset -->
-
 <?php
 class UserController extends Controller
 {
@@ -58,11 +42,11 @@ class UserController extends Controller
         $this->view("reset-password", $data);
     }
 
-    public function signup_process()
+    public function signup_proccess()
     {
         $response = [
             'status' => 'success',
-            'message' => '',
+            'message' => "",
         ];
         $inputs = [
             [
@@ -136,7 +120,7 @@ class UserController extends Controller
                             'country' => $country,
                             'password' => $password,
                         ];
-                        $model_result = $this->model_holder->signup_process($data);
+                        $model_result = $this->model_holder->signup_proccess($data);
 
                         if ($model_result['status']) {
                             $response['status'] = 'success';
