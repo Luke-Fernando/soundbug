@@ -34,6 +34,19 @@ class UserController extends Controller
     public function signin()
     {
         $data = [];
+        if ($this->user) {
+            header("Location: /");
+            exit();
+        }
+        if (boolval($this->remember_me)) {
+            $data['username'] = $_COOKIE['username'];
+            $data['password'] = $_COOKIE['password'];
+            $data['remember_me'] = $_COOKIE['remember_me'];
+        } else {
+            $data['username'] = "";
+            $data['password'] = "";
+            $data['remember_me'] = "";
+        }
         $this->view("signin", $data);
     }
 
@@ -140,6 +153,62 @@ class UserController extends Controller
             } else {
                 $response['status'] = 'error';
                 $response['message'] = 'Password does not match';
+            }
+        } else {
+            $response['status'] = 'error';
+            $response['message'] = $stat['message'];
+        }
+
+        echo json_encode($response);
+    }
+
+    public function signin_proccess()
+    {
+        $response = [
+            'status' => 'success',
+            'message' => "",
+        ];
+        $inputs = [
+            [
+                'variable' => 'username',
+                'name' => 'Username',
+                'type' => 'text',
+            ],
+            [
+                'variable' => 'password',
+                'name' => 'Password',
+                'type' => 'password',
+            ]
+        ];
+
+        $stat = $this->validate_input($inputs);
+
+        if ($stat['status']) {
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $remember_me = $_POST['remember_me'];
+
+            $username = strtolower($username);
+            $username = trim($username);
+            $username_reg = "/^[a-zA-Z0-9]+$/";
+
+            if (preg_match($username_reg, $username)) {
+                $data = [
+                    'username' => $username,
+                    'password' => $password,
+                    'remember_me' => $remember_me
+                ];
+                $model_result = $this->model_handler->signin_proccess($data);
+
+                if ($model_result['status']) {
+                    $response['status'] = 'success';
+                } else {
+                    $response['status'] = 'error';
+                    $response['message'] = $model_result['message'];
+                }
+            } else {
+                $response['status'] = 'error';
+                $response['message'] = 'Invalid username';
             }
         } else {
             $response['status'] = 'error';

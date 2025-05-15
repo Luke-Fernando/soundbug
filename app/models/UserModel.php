@@ -63,6 +63,47 @@ class UserModel extends Model
         return $result;
     }
 
+    public function signin_proccess($data)
+    {
+        extract($data);
+        $result = [
+            'status' => true,
+            'message' => '',
+        ];
+
+        $username_resultset = $this->search("SELECT * FROM user WHERE username = ?;", [$username]);
+        $username_num_rows = $username_resultset->num_rows;
+        if ($username_num_rows == 1) {
+
+
+            $hashed_password = $this->hash_password($password);
+            $user_resultset = $this->search(
+                "SELECT * FROM user WHERE username = ? AND password = ?;",
+                [$username, $hashed_password]
+            );
+            $user_num = $user_resultset->num_rows;
+            if ($user_num == 1) {
+                $user = $user_resultset->fetch_assoc();
+                $_SESSION['user'] = $user;
+                if ($remember_me == '1') {
+                    setcookie("username", $username, time() + (86400 * 30), "/");
+                    setcookie("password", $password, time() + (86400 * 30), "/");
+                    setcookie("remember_me", "true", time() + (86400 * 30), "/");
+                } else {
+                    setcookie("username", "", time() - 3600, "/");
+                    setcookie("password", "", time() - 3600, "/");
+                    setcookie("remember_me", "", time() - 3600, "/");
+                }
+            }
+            $result['status'] = true;
+        } else {
+            $result['status'] = false;
+            $result['message'] = "Username or password is incorrect";
+        }
+
+        return $result;
+    }
+
     private function hash_password($password)
     {
         return password_hash($password, PASSWORD_DEFAULT);

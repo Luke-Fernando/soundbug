@@ -3,6 +3,7 @@ class Controller
 {
 
     protected $user;
+    protected $remember_me;
     protected $model_handler;
 
     public function __construct()
@@ -11,6 +12,9 @@ class Controller
             $this->user = $_SESSION['user'];
         } else {
             $this->user = null;
+        }
+        if (isset($_COOKIE['remember_me'])) {
+            $this->remember_me = $_COOKIE['remember_me'];
         }
     }
 

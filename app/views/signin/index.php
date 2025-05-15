@@ -5,7 +5,7 @@ $head_title = "SoundBug | Sign In";
 require __DIR__ . '/../_includes/head.php';
 ?>
 
-<body>
+<body data-handler="signin">
     <?php
     require __DIR__ . '/../_includes/navbar.php';
     ?>
@@ -19,14 +19,14 @@ require __DIR__ . '/../_includes/head.php';
                 <label for="username" class="text-[var(--color-dark-blue)] text-sm">
                     Username
                 </label>
-                <input type="text" name="username" id="username" class="w-full h-8 bg-[var(--color-low-blue-bg)] box-border px-3 border-0 
+                <input type="text" name="username" id="username" value="<?php echo $username; ?>" class="w-full h-8 bg-[var(--color-low-blue-bg)] box-border px-3 border-0 
                     ring-0 focus:ring-2 focus:ring-[var(--color-orange)] outline-0 text-[var(--color-dark-blue-bg)] text-xs" placeholder="Place your username here">
             </div>
             <div class="col-span-1 h-auto flex flex-col justify-start items-start gap-2 sm:gap-3.5 relative">
                 <label for="password" class="text-[var(--color-dark-blue)] text-sm">
                     Password
                 </label>
-                <input type="password" name="password" id="password" class="w-full h-8 bg-[var(--color-low-blue-bg)] box-border pl-3 pr-8 border-0 
+                <input type="password" name="password" id="password" value="<?php echo $password; ?>" class="w-full h-8 bg-[var(--color-low-blue-bg)] box-border pl-3 pr-8 border-0 
                 ring-0 focus:ring-2 focus:ring-[var(--color-orange)] outline-0 text-[var(--color-dark-blue-bg)] text-xs" placeholder="Place your password here">
                 <label for="password-toggle" class="h-8 aspect-square flex justify-center items-center absolute bottom-0 right-0 
                 text-[var(--color-dark-blue-bg)]">
@@ -45,28 +45,42 @@ require __DIR__ . '/../_includes/head.php';
                     </svg>
                 </label>
             </div>
-            <div class="col-span-1 h-auto text-right">
-                <label for="forget-password" class="text-xs text-[var(--color-dark-blue)] underline hover:text-[var(--color-orange)] 
+            <div class="col-span-1 h-auto flex justify-between items-center">
+                <div class="w-auto h-auto flex justify-start items-center gap-2">
+                    <input type="checkbox" id="remember-me" class="peer hidden" <?php if (!empty($remember_me)) {
+                                                                                ?>checked<?php
+                                                                                } ?>>
+                    <label for="remember-me" class="w-3 aspect-square bg-[var(--color-low-blue-bg)] flex justify-center items-center 
+                    border peer-checked:bg-[var(--color-orange)]">
+                    </label>
+                    <label for="remember-me" class="text-xs text-[var(--color-dark-blue)]">
+                        Remember me
+                    </label>
+                </div>
+                <div class="w-auto h-auto">
+                    <label for="forget-password" class="text-xs text-[var(--color-dark-blue)] underline hover:text-[var(--color-orange)] 
                 ease-linear duration-100">Forgot password</label>
-                <input type="checkbox" name="forget-password" id="forget-password" class="hidden peer">
-                <label for="forget-password" class="w-screen h-screen bg-[rgba(0,0,0,0.5)] fixed top-0 left-0 z-40 hidden peer-checked:flex justify-center items-center">
-                </label>
-                <div class="w-[40vw] h-auto fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-white hidden 
+                    <input type="checkbox" name="forget-password" id="forget-password" class="hidden peer">
+                    <label for="forget-password" class="w-screen h-screen bg-[rgba(0,0,0,0.5)] fixed top-0 left-0 z-40 hidden peer-checked:flex justify-center items-center">
+                    </label>
+                    <div class="w-[40vw] h-auto fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-white hidden 
                 peer-checked:flex flex-col gap-14 box-border md:px-20 py-10 justify-center items-center">
-                    <div class="w-full h-auto flex flex-col justify-start items-start gap-2 sm:gap-3.5">
-                        <label for="reset-email" class="text-[var(--color-dark-blue)] text-sm">
-                            Email
-                        </label>
-                        <input type="email" name="reset-email" id="reset-email" class="w-full h-8 bg-[var(--color-low-blue-bg)] box-border px-3 border-0 
+                        <div class="w-full h-auto flex flex-col justify-start items-start gap-2 sm:gap-3.5">
+                            <label for="reset-email" class="text-[var(--color-dark-blue)] text-sm">
+                                Email
+                            </label>
+                            <input type="email" name="reset-email" id="reset-email" class="w-full h-8 bg-[var(--color-low-blue-bg)] box-border px-3 border-0 
                         ring-0 focus:ring-2 focus:ring-[var(--color-orange)] outline-0 text-[var(--color-dark-blue-bg)] text-xs" placeholder="Place your email here">
-                    </div>
-                    <div class="w-full h-auto flex justify-end items-center">
-                        <?php
-                        $btn_text = "Send reset link";
-                        require __DIR__ . '/../_includes/primary-btn.php';
-                        ?>
+                        </div>
+                        <div class="w-full h-auto flex justify-end items-center">
+                            <?php
+                            $btn_text = "Send reset link";
+                            require __DIR__ . '/../_includes/primary-btn.php';
+                            ?>
+                        </div>
                     </div>
                 </div>
+
             </div>
             <div class="col-span-1 h-auto flex justify-between items-center mt-3.5">
                 <p class="text-xs text-[var(--color-dark-blue)]">
@@ -75,6 +89,8 @@ require __DIR__ . '/../_includes/head.php';
                 </p>
                 <?php
                 $btn_text = "Sign in";
+                $btn_type = "submit";
+                $id = "send";
                 require __DIR__ . '/../_includes/primary-btn.php';
                 ?>
             </div>
