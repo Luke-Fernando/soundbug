@@ -34,6 +34,7 @@ $router->register('/reviews/add', 'TrackController', 'add_review');
 $router->register('/reviews/edit', 'TrackController', 'edit_review');
 $router->register('/api/user/signup', 'UserController', 'signup_proccess');
 $router->register('/api/user/signin', 'UserController', 'signin_proccess');
+$router->register('/api/user/signout', 'UserController', 'signout_proccess');
 try {
     $router->dispatch(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 } catch (Exception $ex) {

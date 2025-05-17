@@ -27,18 +27,23 @@ class UserController extends Controller
     public function signup()
     {
         $countries = $this->model_handler->get_countries();
-        $data = ['countries' => $countries];
+        $data = [
+            'user' => $this->user,
+            'countries' => $countries
+        ];
         $this->view("signup", $data);
     }
 
     public function signin()
     {
-        $data = [];
+        $data = [
+            "user" => $this->user
+        ];
         if ($this->user) {
             header("Location: /");
             exit();
         }
-        if (boolval($this->remember_me)) {
+        if ($this->remember_me == "true") {
             $data['username'] = $_COOKIE['username'];
             $data['password'] = $_COOKIE['password'];
             $data['remember_me'] = $_COOKIE['remember_me'];
@@ -180,7 +185,6 @@ class UserController extends Controller
                 'type' => 'password',
             ]
         ];
-
         $stat = $this->validate_input($inputs);
 
         if ($stat['status']) {
@@ -216,6 +220,11 @@ class UserController extends Controller
         }
 
         echo json_encode($response);
+    }
+
+    public function signout_proccess()
+    {
+        $this->model_handler->signout_proccess();
     }
 
     private function validate_input($inputs)

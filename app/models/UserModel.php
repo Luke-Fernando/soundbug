@@ -70,30 +70,29 @@ class UserModel extends Model
             'status' => true,
             'message' => '',
         ];
-
         $username_resultset = $this->search("SELECT * FROM user WHERE username = ?;", [$username]);
         $username_num_rows = $username_resultset->num_rows;
         if ($username_num_rows == 1) {
-
-
             $hashed_password = $this->hash_password($password);
-            $user_resultset = $this->search(
-                "SELECT * FROM user WHERE username = ? AND password = ?;",
-                [$username, $hashed_password]
-            );
-            $user_num = $user_resultset->num_rows;
-            if ($user_num == 1) {
+            $password_resultset = $this->search("SELECT * FROM user WHERE username = ?;", [$username]);
+            $password_data = $password_resultset->fetch_assoc();
+            $hashed_password = $password_data['password'];
+            if ($this->validate_password($password, $hashed_password)) {
+                $user_resultset = $this->search("SELECT * FROM user WHERE username = ? AND password = ?;", [$username, $hashed_password]);
                 $user = $user_resultset->fetch_assoc();
                 $_SESSION['user'] = $user;
-                if ($remember_me == '1') {
-                    setcookie("username", $username, time() + (86400 * 30), "/");
-                    setcookie("password", $password, time() + (86400 * 30), "/");
-                    setcookie("remember_me", "true", time() + (86400 * 30), "/");
+                if ($remember_me == "1") {
+                    $this->manage_cookies("username", $username, true);
+                    $this->manage_cookies("password", $password, true);
+                    $this->manage_cookies("remember_me", "true", true);
                 } else {
-                    setcookie("username", "", time() - 3600, "/");
-                    setcookie("password", "", time() - 3600, "/");
-                    setcookie("remember_me", "", time() - 3600, "/");
+                    $this->manage_cookies("username", "", false);
+                    $this->manage_cookies("password", "", false);
+                    $this->manage_cookies("remember_me", "", false);
                 }
+            } else {
+                $result['status'] = false;
+                $result['message'] = "Username or password is incorrect";
             }
             $result['status'] = true;
         } else {
@@ -104,8 +103,45 @@ class UserModel extends Model
         return $result;
     }
 
+    public function signout_proccess()
+    {
+        session_destroy();
+        $this->manage_cookies("username", "", false);
+        $this->manage_cookies("password", "", false);
+        $this->manage_cookies("remember_me", "", false);
+        header("Location: /");
+    }
+
     private function hash_password($password)
     {
         return password_hash($password, PASSWORD_DEFAULT);
+    }
+
+    private function validate_password($password, $hashed_password)
+    {
+        if (password_verify($password, $hashed_password)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private function manage_cookies($name, $value, $expire)
+    {
+        $time = 0;
+        if ($expire) {
+            $time = time() + (86400 * 30);
+        } else {
+            $time = time() - 3600;
+        }
+        setcookie(
+            $name,
+            $value,
+            [
+                'expires' => $time,
+                'path' => '/',
+                'samesite' => 'Lax',
+            ]
+        );
     }
 }

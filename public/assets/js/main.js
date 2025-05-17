@@ -216,7 +216,7 @@ function signin() {
 
     send.addEventListener("click", async () => {
         if (username.value == "") {
-            await new Alert().alert("/assets/js/components/alert.html", "Country is required");
+            await new Alert().alert("/assets/js/components/alert.html", "Username is required");
             return;
         }
         if (password.value == "") {
@@ -226,16 +226,17 @@ function signin() {
         let formData = [
             { name: "username", value: username.value },
             { name: "password", value: password.value },
-            { name: "remember_me", value: rememberMe.checked ? "1" : "0" }
+            { name: "remember_me", value: rememberMe.checked ? 1 : 0 }
         ];
         let spinner = new Spinner();
         await spinner.showProccessSpinner();
         let response = await new Connection().post(formData, "/api/user/signin");
+        console.log(response);
         spinner.hideProccessSpinner();
         console.log(JSON.parse(response));
         let responseObj = JSON.parse(response);
         if (responseObj.status == "success") {
-            await new Alert().alert("/assets/js/components/alert.html", "Successfully signed up");
+            await new Alert().alert("/assets/js/components/alert.html", "Successfully signed in");
             window.location.href = "/";
         } else if (responseObj.status == "error") {
             await new Alert().alert("/assets/js/components/alert.html", responseObj.message);
