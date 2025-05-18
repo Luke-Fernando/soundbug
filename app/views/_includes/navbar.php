@@ -30,8 +30,9 @@
                 <label for="account-dropdown-trigger" class="text-inherit border-0 bg-transparent cursor-pointer peer-checked:text-[var(--color-orange)]">
                     Account
                 </label>
-                <div id="account-dropdown" class="peer-checked:flex w-auto h-auto flex-col justify-center items-start absolute top-0 right-[110%] md:top-full md:right-0 hidden 
-                bg-white border border-[var(--color-low-blue-bg)] py-6 px-4 text-[var(--color-dark-blue)] text-xs">
+                <div id="account-dropdown" class="peer-checked:flex w-auto h-auto flex-col 
+                justify-center items-start absolute top-0 right-[110%] md:top-full md:right-0 hidden bg-white border 
+                border-[var(--color-low-blue-bg)] py-6 px-4 text-[var(--color-dark-blue)] text-xs">
                     <?php if ($user != null) { ?>
                         <a href="/account" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-1">Account</a>
                         <a href="/profile" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-1">Profile</a>

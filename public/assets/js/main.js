@@ -133,6 +133,29 @@ init([
     }
 ]);
 // main
+function checkboxTrigger() {
+    let triggers = document.querySelectorAll("input[data-checkbox-trigger]");
+    document.addEventListener("click", (e) => {
+        triggers.forEach(trigger => {
+            let triggerVal = trigger.getAttribute("data-checkbox-trigger");
+            let triggerContainers = document.querySelectorAll(`[data-checkbox-trigger=${triggerVal}]`);
+            let containsTrigger = false;
+            triggerContainers.forEach(container => {
+                if (e.target.contains(container)) {
+                    containsTrigger = true;
+                    console.log("----------");
+                    console.log(e.target);
+                    console.log(container);
+                    console.log("----------");
+                }
+            });
+            if (!(e.target.matches(`[data-checkbox-trigger="${triggerVal}"]`)) && !containsTrigger) {
+                trigger.checked = false;
+            }
+        });
+    });
+}
+
 function signup() {
     const firstName = document.querySelector("#first-name");
     const lastName = document.querySelector("#last-name");
