@@ -586,6 +586,18 @@
   .max-w-full {
     max-width: 100%;
   }
+  .min-w-8 {
+    min-width: calc(var(--spacing) * 8);
+  }
+  .min-w-20 {
+    min-width: calc(var(--spacing) * 20);
+  }
+  .min-w-28 {
+    min-width: calc(var(--spacing) * 28);
+  }
+  .min-w-80 {
+    min-width: calc(var(--spacing) * 80);
+  }
   .min-w-\[687px\] {
     min-width: 687px;
   }
@@ -707,6 +719,9 @@
   .gap-5 {
     gap: calc(var(--spacing) * 5);
   }
+  .gap-6 {
+    gap: calc(var(--spacing) * 6);
+  }
   .gap-7 {
     gap: calc(var(--spacing) * 7);
   }
@@ -715,6 +730,9 @@
   }
   .gap-10 {
     gap: calc(var(--spacing) * 10);
+  }
+  .gap-11 {
+    gap: calc(var(--spacing) * 11);
   }
   .gap-14 {
     gap: calc(var(--spacing) * 14);
@@ -804,6 +822,9 @@
   .bg-\[var\(--color-low-blue-bg\)\] {
     background-color: var(--color-low-blue-bg);
   }
+  .bg-\[var\(--color-low-orange\)\] {
+    background-color: var(--color-low-orange);
+  }
   .bg-\[var\(--color-orange\)\] {
     background-color: var(--color-orange);
   }
@@ -863,6 +884,12 @@
   }
   .px-10 {
     padding-inline: calc(var(--spacing) * 10);
+  }
+  .px-11 {
+    padding-inline: calc(var(--spacing) * 11);
+  }
+  .px-16 {
+    padding-inline: calc(var(--spacing) * 16);
   }
   .py-1 {
     padding-block: calc(var(--spacing) * 1);
@@ -941,9 +968,6 @@
   }
   .text-center {
     text-align: center;
-  }
-  .text-right {
-    text-align: right;
   }
   .font-train-one {
     font-family: var(--font-train-one);
@@ -1114,11 +1138,6 @@
       color: var(--color-orange);
     }
   }
-  .peer-checked\:text-red-300 {
-    &:is(:where(.peer):checked ~ *) {
-      color: var(--color-red-300);
-    }
-  }
   .before\:absolute {
     &::before {
       content: var(--tw-content);
@@ -1255,6 +1274,14 @@
       --tw-scale-x: 90%;
       --tw-scale-y: 90%;
       --tw-scale-z: 90%;
+      scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+  }
+  .active\:scale-95 {
+    &:active {
+      --tw-scale-x: 95%;
+      --tw-scale-y: 95%;
+      --tw-scale-z: 95%;
       scale: var(--tw-scale-x) var(--tw-scale-y);
     }
   }

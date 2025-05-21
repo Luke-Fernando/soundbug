@@ -1,0 +1,21 @@
+<div class="fixed top-0 left-0 w-screen h-screen z-50 flex justify-center items-center bg-black/20">
+  <div class="w-auto h-auto flex flex-col justify-center items-center gap-8 bg-[var(--color-grey-bg)] py-8 px-11">
+    <p id="confirmation-message" class="text-sm text-[var(--color-dark-blue)]">Are you sure?</p>
+    <div class="w-auto h-auto flex justify-center items-center gap-6">
+      <button
+        id="false"
+        data-confirmation="false"
+        class="w-auto min-w-28 text-sm bg-[var(--color-dark-blue-bg)] text-[var(--color-grey-bg)] py-2 px-3.5 active:scale-95 duration-100 ease-linear"
+      >
+        Cancel
+      </button>
+      <button
+        id="true"
+        data-confirmation="true"
+        class="w-auto min-w-28 text-sm bg-[var(--color-low-orange)] text-[var(--color-dark-blue)] py-2 px-3.5 hover:bg-[var(--color-orange)] hover:text-[var(--color-grey-bg)] active:scale-95 duration-100 ease-linear"
+      >
+        Yes
+      </button>
+    </div>
+  </div>
+</div>

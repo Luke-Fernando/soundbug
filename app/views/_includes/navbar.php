@@ -38,7 +38,8 @@
                         <a href="/profile" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-1">Profile</a>
                         <a href="/stats" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-1">Stats</a>
                         <a href="/my-tracks" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-1">My tracks</a>
-                        <a href="/api/user/signout" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-1">Signout</a>
+                        <button id="signout-btn" data-handler="signout" href="/api/user/signout" class="block w-max h-auto text-inherit 
+                        hover:text-[var(--color-orange)] ease-linear duration-100 py-1">Signout</button>
                     <?php } else { ?>
                         <a href="/signin" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-1">Signin</a>
                         <a href="/signup" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-1">Signup</a>

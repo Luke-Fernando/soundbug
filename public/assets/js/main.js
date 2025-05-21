@@ -109,6 +109,50 @@ class Spinner {
         }
     }
 }
+
+class Confirmation {
+    constructor(state) {
+        this.#init(state);
+    }
+
+    #init(state) {
+        const states = [true, false];
+        if (!states.includes(state)) {
+            this.#distpatch(state);
+        } else {
+            console.warn("Invalid state for confirmation");
+        }
+    }
+
+    #distpatch(state) {
+        let confirmation = new CustomEvent("confirm", {
+            detail: {
+                selected: state
+            }
+        });
+        document.dispatchEvent(confirmation);
+    }
+}
+
+class AskConfirmation {
+
+    constructor() {
+        this.#init();
+    }
+
+    async #init() {
+        let confirmationWindow = await generateElement("/assets/js/components/confirmation.html");
+        document.body.appendChild(confirmationWindow);
+        confirmationWindow.querySelector("[data-confirmation='true']").addEventListener("click", () => {
+            new Confirmation("true");
+            document.body.removeChild(confirmationWindow);
+        });
+        confirmationWindow.querySelector("[data-confirmation='false']").addEventListener("click", () => {
+            new Confirmation("false");
+            document.body.removeChild(confirmationWindow);
+        });
+    }
+}
 // helpers
 // main
 function init(functionsList) {
@@ -130,6 +174,10 @@ init([
     {
         'handler': 'signin',
         'function': 'signin'
+    },
+    {
+        'handler': 'signout',
+        'function': 'signout'
     }
 ]);
 // main
@@ -265,6 +313,20 @@ function signin() {
             await new Alert().alert("/assets/js/components/alert.html", responseObj.message);
         } else {
             await new Alert().alert("/assets/js/components/alert.html", "Something went wrong");
+        }
+    });
+}
+
+async function signout() {
+    const signoutBtn = document.getElementById("signout-btn");
+    signoutBtn.addEventListener("click", async () => {
+        new AskConfirmation();
+    });
+    document.addEventListener("confirm", async (e) => {
+        if (e.detail.selected == "true") {
+            await new Connection().get("/api/user/signout");
+            await new Alert().alert("/assets/js/components/alert.html", "Successfully signed out");
+            window.location.reload();
         }
     });
 }
