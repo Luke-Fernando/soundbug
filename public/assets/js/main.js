@@ -43,46 +43,30 @@ function generateElement(path) {
 }
 
 class Alert {
-    constructor() {
-        this.uniqueShortId = new Date().getTime();
-        this.alertHandler = null;
+    constructor(path, alertText) {
+        this.#initAlert(path, alertText);
     }
 
-    alert(path, alertText) {
-        return new Promise(async (resolve) => {
-            await this.#showAlert(path, alertText);
-            this.#hideAlert();
-            resolve();
+    async #initAlert(path, alertText) {
+        let alert = await generateElement(path);
+        let alertCloseBtn = alert.querySelector("[data-close]");
+        alert.querySelector("#alert-text").textContent = alertText;
+        this.#displayAlert(alert);
+        alertCloseBtn.addEventListener("click", () => {
+            this.#hideAlert(alert);
         })
+
     }
 
-    #showAlert(path, alertText) {
-        return new Promise(async (resolve) => {
-            let alert = await generateElement(path);
-            alert.querySelector("#alert-text").textContent = alertText;
-            document.body.appendChild(alert);
-            alert.style.transform = "translateY(-100%)";
-            await new Promise((resolve) => {
-                setTimeout(() => { resolve() }, 10);
-            });
-            alert.style.transform = "translateY(0)";
-            alert.addEventListener("transitionend", async () => {
-                this.alertHandler = alert;
-                console.log("Opened alert: " + this.uniqueShortId);
-                resolve();
-            });
+    async #displayAlert(alert) {
+        document.body.appendChild(alert);
+    }
+
+    #hideAlert(alert) {
+        alert.classList.add("-translate-y-full");
+        alert.addEventListener("transitionend", () => {
+            document.body.removeChild(alert);
         })
-    }
-
-    #hideAlert() {
-        this.alertHandler.querySelector("[data-close]").addEventListener("click", () => {
-            this.alertHandler.style.transform = "translateY(-100%)";
-            this.alertHandler.addEventListener("transitionend", () => {
-                document.body.removeChild(this.alertHandler);
-                console.log("Closed alert: " + this.uniqueShortId);
-                resolve();
-            });
-        });
     }
 }
 
@@ -178,6 +162,14 @@ init([
     {
         'handler': 'signout',
         'function': 'signout'
+    },
+    {
+        'handler': 'forgot-password',
+        'function': 'sendResetLink'
+    },
+    {
+        'handler': 'add-track',
+        'function': 'addTrack'
     }
 ]);
 // main
@@ -217,39 +209,39 @@ function signup() {
 
     send.addEventListener("click", async () => {
         if (firstName.value == "") {
-            await new Alert().alert("/assets/js/components/alert.html", "First name is required");
+            new Alert("/assets/js/components/alert.html", "First name is required");
             return;
         }
         if (lastName.value == "") {
-            await new Alert().alert("/assets/js/components/alert.html", "Last name is required");
+            new Alert("/assets/js/components/alert.html", "Last name is required");
             return;
         }
         if (username.value == "") {
-            await new Alert().alert("/assets/js/components/alert.html", "Username is required");
+            new Alert("/assets/js/components/alert.html", "Username is required");
             return;
         }
         if (email.value == "") {
-            await new Alert().alert("/assets/js/components/alert.html", "Email is required");
+            new Alert("/assets/js/components/alert.html", "Email is required");
             return;
         }
         if (mobile.value == "") {
-            await new Alert().alert("/assets/js/components/alert.html", "Mobile is required");
+            new Alert("/assets/js/components/alert.html", "Mobile is required");
             return;
         }
         if (country.value == "") {
-            await new Alert().alert("/assets/js/components/alert.html", "Country is required");
+            new Alert("/assets/js/components/alert.html", "Country is required");
             return;
         }
         if (password.value == "") {
-            await new Alert().alert("/assets/js/components/alert.html", "Password is required");
+            new Alert("/assets/js/components/alert.html", "Password is required");
             return;
         }
         if (confirmPassword.value == "") {
-            await new Alert().alert("/assets/js/components/alert.html", "Confirm password is required");
+            new Alert("/assets/js/components/alert.html", "Confirm password is required");
             return;
         }
         if (password.value != confirmPassword.value) {
-            await new Alert().alert("/assets/js/components/alert.html", "Password and confirm password do not match");
+            new Alert("/assets/js/components/alert.html", "Password and confirm password do not match");
             return;
         }
         let formData = [
@@ -269,12 +261,12 @@ function signup() {
         console.log(JSON.parse(response));
         let responseObj = JSON.parse(response);
         if (responseObj.status == "success") {
-            await new Alert().alert("/assets/js/components/alert.html", "Successfully signed up");
+            new Alert("/assets/js/components/alert.html", "Successfully signed up");
             window.location.href = "/signin";
         } else if (responseObj.status == "error") {
-            await new Alert().alert("/assets/js/components/alert.html", responseObj.message);
+            new Alert("/assets/js/components/alert.html", responseObj.message);
         } else {
-            await new Alert().alert("/assets/js/components/alert.html", "Something went wrong");
+            new Alert("/assets/js/components/alert.html", "Something went wrong");
         }
     });
 }
@@ -287,11 +279,11 @@ function signin() {
 
     send.addEventListener("click", async () => {
         if (username.value == "") {
-            await new Alert().alert("/assets/js/components/alert.html", "Username is required");
+            new Alert("/assets/js/components/alert.html", "Username is required");
             return;
         }
         if (password.value == "") {
-            await new Alert().alert("/assets/js/components/alert.html", "Password is required");
+            new Alert("/assets/js/components/alert.html", "Password is required");
             return;
         }
         let formData = [
@@ -307,12 +299,12 @@ function signin() {
         console.log(JSON.parse(response));
         let responseObj = JSON.parse(response);
         if (responseObj.status == "success") {
-            await new Alert().alert("/assets/js/components/alert.html", "Successfully signed in");
+            new Alert("/assets/js/components/alert.html", "Successfully signed in");
             window.location.href = "/";
         } else if (responseObj.status == "error") {
-            await new Alert().alert("/assets/js/components/alert.html", responseObj.message);
+            new Alert("/assets/js/components/alert.html", responseObj.message);
         } else {
-            await new Alert().alert("/assets/js/components/alert.html", "Something went wrong");
+            new Alert("/assets/js/components/alert.html", "Something went wrong");
         }
     });
 }
@@ -325,8 +317,109 @@ async function signout() {
     document.addEventListener("confirm", async (e) => {
         if (e.detail.selected == "true") {
             await new Connection().get("/api/user/signout");
-            await new Alert().alert("/assets/js/components/alert.html", "Successfully signed out");
+            new Alert("/assets/js/components/alert.html", "Successfully signed out");
             window.location.reload();
         }
     });
+}
+
+function sendResetLink() {
+    const sendResetButton = document.getElementById("send-reset-link");
+    const resetEmail = document.getElementById("reset-email");
+
+    sendResetButton.addEventListener("click", async () => {
+        if (resetEmail.value == "") {
+            new Alert("/assets/js/components/alert.html", "Email is required");
+            return;
+        }
+        let spinner = new Spinner();
+        await spinner.showProccessSpinner();
+        let formData = [
+            { name: "reset_email", value: resetEmail.value }
+        ];
+        let response = await new Connection().post(formData, "/api/user/send-reset-link");
+        console.log(response);
+        spinner.hideProccessSpinner();
+        console.log(JSON.parse(response));
+        let responseObj = JSON.parse(response);
+        if (responseObj.status == "success") {
+            new Alert("/assets/js/components/alert.html", "Reset link has been sent to your email");
+        } else {
+            new Alert("/assets/js/components/alert.html", responseObj.message);
+        }
+    })
+}
+
+function addTrack() {
+    loadSubCategories();
+    uploadThumbnail();
+    uploadTrack();
+}
+
+function loadSubCategories() {
+    const category = document.getElementById("category");
+    const subCategory = document.getElementById("sub-category");
+
+    category.addEventListener("change", async () => {
+        let id = category.value;
+        let spinner = new Spinner();
+        spinner.showProccessSpinner();
+        response = await new Connection().get(`/api/load-sub-category?id=${id}`);
+        spinner.hideProccessSpinner();
+        let responseObj = JSON.parse(response);
+        if (responseObj.status == "success") {
+            subCategory.innerHTML = responseObj.data;
+        } else {
+            new Alert("/assets/js/components/alert.html", responseObj.message);
+        }
+    })
+}
+
+function uploadThumbnail() {
+    const thumbnail = document.getElementById("thumbnail");
+    const thumbnailPreview = document.getElementById("thumbnail-preview");
+    thumbnail.addEventListener("change", e => {
+        let file = e.target.files[0];
+        let reader = new FileReader();
+        reader.onload = (e) => {
+            thumbnailPreview.setAttribute("src", e.target.result);
+        }
+        reader.readAsDataURL(file)
+    })
+}
+
+function uploadTrack() {
+    const track = document.getElementById("track");
+    const trackPreview = document.getElementById("track-preview");
+    const trackDuration = document.getElementById("track-duration");
+    const previewSlider = document.getElementById("preview-slider");
+    let minutes;
+    let seconds;
+    let duration;
+    track.addEventListener("change", e => {
+        let file = e.target.files[0];
+        let reader = new FileReader();
+        reader.onload = (e) => {
+            let audio = new Audio(e.target.result);
+            audio.volume = 0.2;
+            audio.addEventListener("loadedmetadata", () => {
+                minutes = Math.floor(audio.duration / 60);
+                seconds = Math.floor(audio.duration - minutes * 60);
+                duration = `${minutes}:${seconds}`;
+                trackDuration.textContent = duration;
+            });
+            audio.addEventListener("timeupdate", () => {
+                let currentPercentage = (audio.currentTime / audio.duration) * 100;
+                previewSlider.style.width = `${currentPercentage}%`;
+            });
+            trackPreview.addEventListener("change", () => {
+                if (trackPreview.checked) {
+                    audio.play();
+                } else {
+                    audio.pause();
+                }
+            })
+        }
+        reader.readAsDataURL(file)
+    })
 }

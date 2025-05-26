@@ -1,27 +1,10 @@
-<!-- Manages music tracks (uploading, browsing, viewing, etc.).
-
-Functions:
-
-index() – Show all tracks (optionally with filters)
-
-view($id) – Show individual track details
-
-upload() – Add a new soundtrack (for admins or creators)
-
-edit($id) – Edit a track
-
-delete($id) – Delete a track
-
-search($keyword) – Search for tracks
-
-download($id) – Download/purchase the track (if allowed) -->
-
 <?php
 class TrackController extends Controller
 {
     public function __construct()
     {
         parent::__construct();
+        $this->model_handler = $this->model("TrackModel");
     }
 
     public function all_tracks()
@@ -73,9 +56,11 @@ class TrackController extends Controller
 
     public function add_track()
     {
+        $categories = $this->model_handler->load_categories();
         $data = [
             "user" => $this->user,
-            "page_topic" => "Add Track"
+            "page_topic" => "Add Track",
+            "categories" => $categories
         ];
         $this->view("add-track", $data);
     }
@@ -103,5 +88,39 @@ class TrackController extends Controller
             "user" => $this->user,
         ];
         $this->view("reviews/edit", $data);
+    }
+
+    public function load_sub_category()
+    {
+        $response = [
+            'status' => 'success',
+            'data' => "",
+        ];
+        if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $model_result = $this->model_handler->load_sub_category($id);
+
+            if ($model_result['status']) {
+                $response['status'] = 'success';
+                ob_start();
+?>
+                <option selected value="">Select sub category</option>
+                <?php
+                for ($i = 0; $i < count($model_result['data']); $i++) {
+                ?>
+                    <option value="<?php echo $model_result['data'][$i]['id']; ?>"><?php echo $model_result['data'][$i]['sub_category']; ?></option>
+                <?php
+                }
+                $response['data'] = ob_get_clean();
+            } else {
+                $response['status'] = 'success';
+                ob_start();
+                ?>
+                <option selected value="">Select category first</option>
+<?php
+                $response['data'] = ob_get_clean();
+            }
+        }
+        echo json_encode($response);
     }
 }

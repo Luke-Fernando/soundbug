@@ -144,4 +144,37 @@ class UserModel extends Model
             ]
         );
     }
+
+    function send_reset_link($data)
+    {
+        extract($data);
+        $result = [
+            'status' => true,
+            'message' => '',
+        ];
+        $user_resultset = $this->search("SELECT * FROM user WHERE email = ?;", [$email]);
+        $user_num = $user_resultset->num_rows;
+        $user = $user_resultset->fetch_assoc();
+        if ($user_num == 1) {
+            $token = bin2hex(random_bytes(16));
+            $this->iud("UPDATE user SET reset_token = ? WHERE email = ?;", [$token, $email]);
+            $mail = new Mailer();
+            $data = [
+                'link' => "http://soundbug.io/reset-password?token=$token"
+            ];
+            $mail->set_template($data, __DIR__ . "/../views/_includes/email-templates/reset-password.php");
+            $mailer_stat = $mail->send("Reset password", $email);
+            if ($mailer_stat == true) {
+                $result['status'] = true;
+            } else {
+                $result['status'] = false;
+                $result['message'] = $mailer_stat;
+            }
+        } else {
+            $result['status'] = false;
+            $result['message'] = "Email not found";
+        }
+
+        return $result;
+    }
 }

@@ -1,6 +1,6 @@
 <div class="w-auto h-auto flex justify-start items-center pb-16">
     <div class="w-auto h-auto flex justify-start items-center">
-        <h3 class="text-[var(--color-dark-blue)] text-base md:text-lg">
+        <h3 class="text-[var(--color-dark-blue)] text-base md:text-lg capitalize">
             <?php echo $page_topic; ?>
         </h3>
     </div>

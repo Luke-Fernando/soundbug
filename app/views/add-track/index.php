@@ -5,7 +5,7 @@ $head_title = "SoundBug | Add New Track";
 require __DIR__ . '/../_includes/head.php';
 ?>
 
-<body>
+<body data-handler="add-track">
     <?php
     require __DIR__ . '/../_includes/navbar.php';
     ?>
@@ -23,8 +23,8 @@ require __DIR__ . '/../_includes/head.php';
             <div class="w-full h-auto flex justify-start items-start gap-10 flex-wrap">
                 <div class="w-44 h-auto flex flex-col justify-start items-start gap-3.5">
                     <p class="text-sm text-[var(--color-dark-blue)]">Thumbnail</p>
-                    <input type="file" class="hidden" id="upload-thumbnail" accept="image/*">
-                    <label for="upload-thumbnail" class="w-full aspect-square flex justify-center items-center border-dotted border-2 
+                    <input type="file" class="hidden" id="thumbnail" accept="image/*">
+                    <label for="thumbnail" class="w-full aspect-square flex justify-center items-center border-dotted border-2 
                     border-[var(--color-dark-blue-bg)] bg-[var(--color-grey-bg)] text-[var(--color-dark-blue-bg)] 
                     hover:text-[var(--color-orange)] hover:border-[var(--color-orange)] ease-linear duration-100 relative">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 aspect-square my-1" viewBox="0 0 20 20">
@@ -33,14 +33,14 @@ require __DIR__ . '/../_includes/head.php';
                         </svg>
                         <div class="w-5/6 aspect-square opacity-40 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 
                         -translate-y-1/2 overflow-hidden pointer-events-none">
-                            <img src="/assets/images/products/flower.jpg" class="min-w-full min-h-full" alt="Image preview">
+                            <img id="thumbnail-preview" src="/assets/images/products/flower.jpg" class="min-w-full min-h-full" alt="Image preview">
                         </div>
                     </label>
                 </div>
                 <div class="w-52 h-auto flex flex-col justify-start items-start gap-3.5">
                     <p class="text-sm text-[var(--color-dark-blue)]">Track</p>
-                    <input type="file" class="hidden" id="upload-track" accept="audio/*">
-                    <label for="upload-track" class="w-full h-auto flex justify-center items-center border-dotted border-2 
+                    <input type="file" class="hidden" id="track" accept="audio/*">
+                    <label for="track" class="w-full h-auto flex justify-center items-center border-dotted border-2 
                     border-[var(--color-dark-blue-bg)] bg-[var(--color-grey-bg)] text-[var(--color-dark-blue-bg)] 
                     hover:text-[var(--color-orange)] hover:border-[var(--color-orange)] ease-linear duration-100">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-6 aspect-square my-1" viewBox="0 0 24 24">
@@ -50,8 +50,8 @@ require __DIR__ . '/../_includes/head.php';
                         </svg>
                     </label>
                     <div class="w-full h-auto flex justify-start items-center">
-                        <input type="checkbox" class="hidden peer" id="preview-track">
-                        <label for="preview-track" class="w-6 aspect-square flex justify-center items-center text-[var(--color-dark-blue-bg)] 
+                        <input type="checkbox" class="hidden peer" id="track-preview">
+                        <label for="track-preview" class="w-6 aspect-square flex justify-center items-center text-[var(--color-dark-blue-bg)] 
                         hover:text-[var(--color-orange)] peer-checked:scale-90 peer-checked:text-[var(--color-orange)] ease-linear 
                         duration-100">
                             <?php
@@ -60,11 +60,11 @@ require __DIR__ . '/../_includes/head.php';
                             ?>
                         </label>
                         <div class="w-full h-1 bg-[var(--color-grey-bg)] relative">
-                            <div class="w-1/2 h-full bg-[var(--color-orange)] absolute top-0 left-0"></div>
+                            <div id="preview-slider" class="h-full bg-[var(--color-orange)] absolute top-0 left-0"></div>
                         </div>
                     </div>
                     <div class="w-full h-auto flex justify-end items-center">
-                        <p class="text-xs text-[var(--color-dark-blue-bg)]">00:00</p>
+                        <p id="track-duration" class="text-xs text-[var(--color-dark-blue-bg)]">00:00</p>
                     </div>
                 </div>
             </div>
@@ -89,11 +89,14 @@ require __DIR__ . '/../_includes/head.php';
                     </label>
                     <select type="text" name="category" id="category" class="w-full h-8 bg-[var(--color-low-blue-bg)] box-border px-3 border-0 
                     ring-0 focus:ring-2 focus:ring-[var(--color-orange)] outline-0 text-[var(--color-dark-blue-bg)] text-xs">
-                        <option selected value="">Category</option>
-                        <option selected value="classic">Classic</option>
-                        <option selected value="pop">Pop</option>
-                        <option selected value="rap">Rap</option>
-                        <option selected value="rock">Rock</option>
+                        <option selected value="">Select category</option>
+                        <?php
+                        for ($i = 0; $i < count($categories); $i++) {
+                        ?>
+                            <option value="<?php echo $categories[$i]['id']; ?>"><?php echo $categories[$i]['category']; ?></option>
+                        <?php
+                        }
+                        ?>
                     </select>
                 </div>
                 <div class="col-span-3 h-auto flex flex-col justify-start items-start gap-3.5">
@@ -102,12 +105,7 @@ require __DIR__ . '/../_includes/head.php';
                     </label>
                     <select type="text" name="sub-category" id="sub-category" class="w-full h-8 bg-[var(--color-low-blue-bg)] box-border px-3 border-0 
                     ring-0 focus:ring-2 focus:ring-[var(--color-orange)] outline-0 text-[var(--color-dark-blue-bg)] text-xs">
-                        <option selected value="">Sub category</option>
-                        <option selected value="modern">Modern</option>
-                        <option selected value="classic">Classic</option>
-                        <option selected value="pop">Pop</option>
-                        <option selected value="rap">Rap</option>
-                        <option selected value="rock">Rock</option>
+                        <option selected value="">Please select a category</option>
                     </select>
                 </div>
                 <div class="col-span-6 h-auto flex flex-col justify-start items-start gap-3.5">

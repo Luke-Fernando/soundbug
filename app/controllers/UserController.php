@@ -301,4 +301,39 @@ class UserController extends Controller
 
         return $status;
     }
+
+    function send_reset_link()
+    {
+        $response = [
+            'status' => 'success',
+            'message' => "",
+        ];
+        $inputs = [
+            [
+                'variable' => 'reset_email',
+                'name' => 'Email',
+                'type' => 'email',
+            ]
+        ];
+        $stat = $this->validate_input($inputs);
+
+        if ($stat['status']) {
+            $email = $_POST['reset_email'];
+            $data = [
+                'email' => $email
+            ];
+            $model_result = $this->model_handler->send_reset_link($data);
+            if ($model_result['status']) {
+                $response['status'] = 'success';
+            } else {
+                $response['status'] = 'error';
+                $response['message'] = $model_result['message'];
+            }
+        } else {
+            $response['status'] = 'error';
+            $response['message'] = $stat['message'];
+        }
+
+        echo json_encode($response);
+    }
 }

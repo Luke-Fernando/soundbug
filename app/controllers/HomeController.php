@@ -13,4 +13,9 @@ class HomeController extends Controller
         ];
         $this->view("home", $data);
     }
+
+    public function email_template()
+    {
+        $this->view("_includes/email-templates", []);
+    }
 }

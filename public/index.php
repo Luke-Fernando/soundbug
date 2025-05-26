@@ -35,6 +35,9 @@ $router->register('/reviews/edit', 'TrackController', 'edit_review');
 $router->register('/api/user/signup', 'UserController', 'signup_proccess');
 $router->register('/api/user/signin', 'UserController', 'signin_proccess');
 $router->register('/api/user/signout', 'UserController', 'signout_proccess');
+$router->register('/api/user/send-reset-link', 'UserController', 'send_reset_link');
+$router->register('/api/load-sub-category', 'TrackController', 'load_sub_category');
+$router->register('/email', 'HomeController', 'email_template');
 try {
     $router->dispatch(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 } catch (Exception $ex) {

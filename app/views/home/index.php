@@ -13,7 +13,7 @@ require __DIR__ . '/../_includes/head.php';
         <header class="container-sub relative h-auto max-h-[696px]">
             <div class="w-full h-auto flex flex-col justify-start items-start pb-80">
                 <div class="w-auto h-auto flex justify-start items-start">
-                    <h1 class="md:text-7xl text-6xl font-bold font-train-one text-[var(--color-dark-blue)]">
+                    <h1 class="md:text-7xl text-6xl font-bold font-train-one text-[var(--color-dark-blue)] md:leading-20 capitalize">
                         Find the <br>tracks that <br>suits you <br>
                         <span class="text-[var(--color-orange)]">better</span>
                     </h1>

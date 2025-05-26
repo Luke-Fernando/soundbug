@@ -24,13 +24,12 @@
             duration-100 py-2 md:py-0 md:px-3">
                 Album
             </a>
-            <div class="relative w-max h-auto flex justify-center items-center text-xs md:text-sm text-[var(--color-dark-blue)] 
+            <button class="group relative w-max h-auto flex justify-center items-center text-xs md:text-sm text-[var(--color-dark-blue)] 
             hover:text-[var(--color-orange)] ease-linear duration-100 py-2 md:py-0 md:px-3">
-                <input id="account-dropdown-trigger" type="checkbox" class="hidden peer">
-                <label for="account-dropdown-trigger" class="text-inherit border-0 bg-transparent cursor-pointer peer-checked:text-[var(--color-orange)]">
+                <p class="text-inherit border-0 bg-transparent cursor-pointer group-focus-within:text-[var(--color-orange)]">
                     Account
-                </label>
-                <div id="account-dropdown" class="peer-checked:flex w-auto h-auto flex-col 
+                </p>
+                <div id="account-dropdown" class="group-focus-within:flex w-auto h-auto flex-col 
                 justify-center items-start absolute top-0 right-[110%] md:top-full md:right-0 hidden bg-white border 
                 border-[var(--color-low-blue-bg)] py-6 px-4 text-[var(--color-dark-blue)] text-xs">
                     <?php if ($user != null) { ?>
@@ -38,14 +37,14 @@
                         <a href="/profile" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-1">Profile</a>
                         <a href="/stats" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-1">Stats</a>
                         <a href="/my-tracks" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-1">My tracks</a>
-                        <button id="signout-btn" data-handler="signout" href="/api/user/signout" class="block w-max h-auto text-inherit 
-                        hover:text-[var(--color-orange)] ease-linear duration-100 py-1">Signout</button>
+                        <a id="signout-btn" data-handler="signout" class="block w-max h-auto text-inherit 
+                        hover:text-[var(--color-orange)] ease-linear duration-100 py-1">Signout</a>
                     <?php } else { ?>
                         <a href="/signin" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-1">Signin</a>
                         <a href="/signup" class="block w-max h-auto text-inherit hover:text-[var(--color-orange)] ease-linear duration-100 py-1">Signup</a>
                     <?php } ?>
                 </div>
-            </div>
+            </button>
         </div>
     </div>
 </nav>
