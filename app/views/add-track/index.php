@@ -33,7 +33,7 @@ require __DIR__ . '/../_includes/head.php';
                         </svg>
                         <div class="w-5/6 aspect-square opacity-40 flex justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 
                         -translate-y-1/2 overflow-hidden pointer-events-none">
-                            <img id="thumbnail-preview" src="/assets/images/products/flower.jpg" class="min-w-full min-h-full" alt="Image preview">
+                            <img id="thumbnail-preview" src="/assets/images/products/default.jpg" class="min-w-full min-h-full" alt="Image preview">
                         </div>
                     </label>
                 </div>
@@ -119,6 +119,8 @@ require __DIR__ . '/../_includes/head.php';
             <div class="w-full h-auto flex justify-end items-center">
                 <?php
                 $btn_text = "Publish";
+                $id = "publish";
+                $type = "button";
                 require __DIR__ . '/../_includes/primary-btn.php';
                 ?>
             </div>

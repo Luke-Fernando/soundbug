@@ -354,6 +354,7 @@ function addTrack() {
     loadSubCategories();
     uploadThumbnail();
     uploadTrack();
+    submitTrack();
 }
 
 function loadSubCategories() {
@@ -410,6 +411,10 @@ function uploadTrack() {
             });
             audio.addEventListener("timeupdate", () => {
                 let currentPercentage = (audio.currentTime / audio.duration) * 100;
+                if (currentPercentage == 100) {
+                    currentPercentage = 0;
+                    trackPreview.checked = false;
+                }
                 previewSlider.style.width = `${currentPercentage}%`;
             });
             trackPreview.addEventListener("change", () => {
@@ -421,5 +426,71 @@ function uploadTrack() {
             })
         }
         reader.readAsDataURL(file)
+    })
+}
+
+function submitTrack() {
+    const thumbnail = document.getElementById("thumbnail");
+    const track = document.getElementById("track");
+    const title = document.getElementById("title");
+    const price = document.getElementById("price");
+    const category = document.getElementById("category");
+    const subCategory = document.getElementById("sub-category");
+    const description = document.getElementById("description");
+    const publishBtn = document.getElementById("publish");
+
+    publishBtn.addEventListener("click", async () => {
+        if (thumbnail.files.length == 0) {
+            new Alert("/assets/js/components/alert.html", "Please add a thumbnail");
+            return;
+        }
+        if (track.files.length == 0) {
+            new Alert("/assets/js/components/alert.html", "Please add the audio track");
+            return;
+        }
+        if (title.value == "") {
+            new Alert("/assets/js/components/alert.html", "Please add the title");
+            return;
+        }
+        if (price.value == "") {
+            new Alert("/assets/js/components/alert.html", "Please add the price");
+            return;
+        }
+        if (category.value == "") {
+            new Alert("/assets/js/components/alert.html", "Please select the category");
+            return;
+        }
+        if (subCategory.value == "") {
+            new Alert("/assets/js/components/alert.html", "Please select the sub category");
+            return;
+        }
+        if (description.value == "") {
+            new Alert("/assets/js/components/alert.html", "Please add the description");
+            return;
+        }
+        let formData = [
+            { name: "thumbnail", value: thumbnail.files[0] },
+            { name: "track", value: track.files[0] },
+            { name: "title", value: title.value },
+            { name: "price", value: price.value },
+            { name: "category", value: category.value },
+            { name: "sub_category", value: subCategory.value },
+            { name: "description", value: description.value },
+        ];
+        let spinner = new Spinner();
+        await spinner.showProccessSpinner();
+        let response = await new Connection().post(formData, "/api/track/add");
+        console.log(response);
+        spinner.hideProccessSpinner();
+        console.log(JSON.parse(response));
+        let responseObj = JSON.parse(response);
+        if (responseObj.status == "success") {
+            new Alert("/assets/js/components/alert.html", "Successfully published");
+            window.location.href = "/my-tracks";
+        } else if (responseObj.status == "error") {
+            new Alert("/assets/js/components/alert.html", responseObj.message);
+        } else {
+            new Alert("/assets/js/components/alert.html", "Something went wrong");
+        }
     })
 }

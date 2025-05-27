@@ -37,6 +37,7 @@ $router->register('/api/user/signin', 'UserController', 'signin_proccess');
 $router->register('/api/user/signout', 'UserController', 'signout_proccess');
 $router->register('/api/user/send-reset-link', 'UserController', 'send_reset_link');
 $router->register('/api/load-sub-category', 'TrackController', 'load_sub_category');
+$router->register('/api/track/add', 'TrackController', 'add_track_proccess');
 $router->register('/email', 'HomeController', 'email_template');
 try {
     $router->dispatch(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
